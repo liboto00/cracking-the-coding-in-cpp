@@ -2,5 +2,5 @@
 
 int main()
 {
-    std::cout << "Testing commit and push";
+    std::cout << "Testing to commit and push";
 }
