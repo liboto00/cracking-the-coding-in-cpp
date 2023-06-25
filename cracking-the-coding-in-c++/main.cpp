@@ -2,8 +2,8 @@
 
 int main()
 {
-    int testNumber;
+    int firstNumber, secondNumber;
 
-    std::cin >> testNumber;
-    std::cout << "testNumber : " << testNumber;
+    std::cin >> firstNumber >> secondNumber;
+    std::cout << firstNumber +secondNumber;
 }
