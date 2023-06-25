@@ -2,7 +2,5 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "Testing commit and push";
 }
-
-// 2. Use the Team Explorer window to connect to source control
