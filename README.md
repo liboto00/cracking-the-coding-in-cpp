@@ -1,6 +1,6 @@
 # Cracking the coding in C++
 
-- Concept
+- Concepts
   - examples
     
 - Coding Test
