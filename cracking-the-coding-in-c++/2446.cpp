@@ -8,18 +8,18 @@ int main()
 	std::cin.tie(NULL);
 	std::cout.tie(NULL);
 
-	int rowNumber;
+	int N;
 
-	std::cin >> rowNumber;
+	std::cin >> N;
 
-	for (int i = 0; i < rowNumber; i++)
+	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < i; j++)
 		{
 			std::cout << " ";
 		}
 
-		for (int k = 0; k < (2 * rowNumber) - (2 * i + 1); k++)
+		for (int k = 0; k < (2 * N) - (2 * i + 1); k++)
 		{
 			std::cout << "*";
 		}
@@ -27,9 +27,9 @@ int main()
 		std::cout << "\n";
 	}
 
-	for (int i = 0; i < rowNumber - 1; i++)
+	for (int i = 0; i < N - 1; i++)
 	{
-		for (int j = i; j < rowNumber - 2; j++)
+		for (int j = i; j < N - 2; j++)
 		{
 			std::cout << " ";
 		}
