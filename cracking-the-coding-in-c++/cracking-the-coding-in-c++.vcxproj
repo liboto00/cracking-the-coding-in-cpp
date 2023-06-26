@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="2446.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
