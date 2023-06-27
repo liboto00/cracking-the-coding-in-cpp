@@ -2,9 +2,10 @@
 
 - Tips
   - [Debugging](https://modoocode.com/31)
+  - [Tech blogs]
 
 - Concepts
-  - [Dynamic Allocation](https://modoocode.com/169)
+  - [Dynamic allocation](https://modoocode.com/169)
   - [OOP](https://modoocode.com/172)
   - [String](https://modoocode.com/198)
   - [STL](https://modoocode.com/223)
@@ -12,6 +13,6 @@
   - [Compile](https://modoocode.com/319)
 
 - Coding Test
-  - [LeetCode Solutions](https://github.com/kamyu104/LeetCode-Solutions)
+  - [LeetCode solutions](https://github.com/kamyu104/LeetCode-Solutions)
   
 - Coding Interview
