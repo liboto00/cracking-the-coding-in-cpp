@@ -1,6 +1,7 @@
 # Cracking the coding in C++
 
 - Tips
+  - [Things I wish I knew before I studied C Language](https://modoocode.com/315)
   - [Debugging](https://modoocode.com/31)
   - [Tech blogs](https://github.com/liboto00/cracking-the-coding-in-cpp/blob/master/tech-blogs.md)
 
