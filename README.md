@@ -2,7 +2,7 @@
 
 - Tips
   - [Debugging](https://modoocode.com/31)
-  - [Tech blogs]
+  - [Tech blogs]()
 
 - Concepts
   - [Dynamic allocation](https://modoocode.com/169)
