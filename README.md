@@ -2,7 +2,7 @@
 
 - Tips
   - [Debugging](https://modoocode.com/31)
-  - [Tech blogs](https://github.com/liboto00/cracking-the-coding-in-cpp/blob/master/Tech-blogs.md)
+  - [Tech blogs](https://github.com/liboto00/cracking-the-coding-in-cpp/blob/master/tech-blogs.md)
 
 - Concepts
   - [Dynamic allocation](https://modoocode.com/169)
