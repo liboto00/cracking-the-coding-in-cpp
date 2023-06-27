@@ -17,5 +17,5 @@
   
 - Coding Interview
   - [Junior Graphics Programmer](https://erkaman.github.io/posts/junior_graphics_programmer_interview.html)
-  - [주니어 클라이언트 개발자](https://github.com/Romanticism-GameDeveloper/GameDeveloper-Client-Interview)
+  - [Junior Client Programmer in South Korea](https://github.com/Romanticism-GameDeveloper/GameDeveloper-Client-Interview)
   - 
