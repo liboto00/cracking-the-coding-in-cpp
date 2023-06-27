@@ -16,12 +16,12 @@ int main()
 	{
 		for (int j = 0; j < i; j++)
 		{
-			std::cout << " ";
+			std::cout << ' ';
 		}
 
 		for (int k = 0; k < (2 * N) - (2 * i + 1); k++)
 		{
-			std::cout << "*";
+			std::cout << '*';
 		}
 
 		std::cout << "\n";
@@ -31,12 +31,12 @@ int main()
 	{
 		for (int j = i; j < N - 2; j++)
 		{
-			std::cout << " ";
+			std::cout << ' ';
 		}
 
 		for (int k = 0; k < 3 + (2 * i); k++)
 		{
-			std::cout << "*";
+			std::cout << '*';
 		}
 
 		std::cout << "\n";
