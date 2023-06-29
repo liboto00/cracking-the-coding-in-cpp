@@ -33,7 +33,7 @@ int main()
 		std::reverse(itr + startNumber, itr + endNumber);
 	}
 
-	for (const auto& i : vec)
+	for (int i : vec)
 	{
 		std::cout << i << " ";
 	}
