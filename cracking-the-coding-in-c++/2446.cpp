@@ -1,4 +1,6 @@
-// 백준 온라인 저지 2446번
+// 백준 온라인 저지 2446번 https://www.acmicpc.net/problem/2446
+// 시간 제한 : 1초
+// 걸린 시간 : 0ms
 
 #include <iostream>
 #include <vector>
@@ -19,12 +21,12 @@ int main()
 	{
 		for (int j = 0; j < i; j++)
 		{
-			std::cout << " ";
+			std::cout << ' ';
 		}
 
 		for (int k = 0; k < (2 * N) - (2 * i + 1); k++)
 		{
-			std::cout << "*";
+			std::cout << '*';
 		}
 
 		std::cout << "\n";
@@ -34,12 +36,12 @@ int main()
 	{
 		for (int j = i; j < N - 2; j++)
 		{
-			std::cout << " ";
+			std::cout << ' ';
 		}
 
 		for (int k = 0; k < 3 + (2 * i); k++)
 		{
-			std::cout << "*";
+			std::cout << '*';
 		}
 
 		std::cout << "\n";
