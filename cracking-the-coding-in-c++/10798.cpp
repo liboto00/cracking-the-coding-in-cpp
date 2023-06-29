@@ -5,18 +5,19 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
 int main()
 {
-	std::ios_base::sync_with_stdio(false);
-	std::cin.tie(NULL);
-	std::cout.tie(NULL);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-	std::string array[5][15] = {"-1", };
-	std::string inputletters;
+	string array[5][15] = {"-1", };
+	string inputletters;
 
 	for (int i = 0; i < 5; i++)
 	{
-		std::cin >> inputletters;
+		cin >> inputletters;
 
 		for (int j = 0; j < inputletters.size(); j++)
 		{
@@ -34,7 +35,7 @@ int main()
 			}
 			else
 			{
-				std::cout << array[j][i];
+				cout << array[j][i];
 			}
 		}
 	}

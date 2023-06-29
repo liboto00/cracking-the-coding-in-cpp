@@ -6,35 +6,36 @@
 #include <vector>
 #include <algorithm>
 
+using namespace std;
 int main()
 {
-	std::ios_base::sync_with_stdio(false);
-	std::cin.tie(NULL);
-	std::cout.tie(NULL);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-	std::vector<int> vec;
+	vector<int> vec;
 	int N, M;
 	int startNumber, endNumber;
 
-	std::cin >> N >> M;
+	cin >> N >> M;
 
 	for (int i = 0; i < N; ++i)
 	{
 		vec.push_back(i + 1);
 	}
 
-	std::vector<int>::iterator itr = vec.begin();
+	vector<int>::iterator itr = vec.begin();
 	for (int i = 0; i < M; i++)
 	{
-		std::cin >> startNumber >> endNumber;
+		cin >> startNumber >> endNumber;
 		startNumber -= 1;
 		/*endNumber -= 1;*/
 		
-		std::reverse(itr + startNumber, itr + endNumber);
+		reverse(itr + startNumber, itr + endNumber);
 	}
 
 	for (int i : vec)
 	{
-		std::cout << i << " ";
+		cout << i << " ";
 	}
 }

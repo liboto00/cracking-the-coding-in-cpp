@@ -4,43 +4,44 @@
 
 #include <iostream>
 
+using namespace std;
 int main()
 {
-	std::ios_base::sync_with_stdio(false);
-	std::cin.tie(NULL);
-	std::cout.tie(NULL);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
 	int N;
 
-	std::cin >> N;
+	cin >> N;
 
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < i; j++)
 		{
-			std::cout << ' ';
+			cout << ' ';
 		}
 
 		for (int k = 0; k < (2 * N) - (2 * i + 1); k++)
 		{
-			std::cout << '*';
+			cout << '*';
 		}
 
-		std::cout << "\n";
+		cout << "\n";
 	}
 
 	for (int i = 0; i < N - 1; i++)
 	{
 		for (int j = i; j < N - 2; j++)
 		{
-			std::cout << ' ';
+			cout << ' ';
 		}
 
 		for (int k = 0; k < 3 + (2 * i); k++)
 		{
-			std::cout << '*';
+			cout << '*';
 		}
 
-		std::cout << "\n";
+		cout << "\n";
 	}
 }
