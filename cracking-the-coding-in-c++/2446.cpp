@@ -1,6 +1,6 @@
 // 백준 온라인 저지 2446번 https://www.acmicpc.net/problem/2446
-// 시간 제한 : 1초
-// 걸린 시간 : 0ms
+// 제한 시간 : 1초
+// 실행 시간 : 0ms
 
 #include <iostream>
 #include <vector>
