@@ -1,6 +1,6 @@
 // 백준 온라인 저지 10811번 https://www.acmicpc.net/problem/10811
 // 제한 시간 : 1초
-// 실행 시간 : ms
+// 실행 시간 : 0ms
 
 #include <iostream>
 #include <vector>
@@ -28,12 +28,9 @@ int main()
 	{
 		std::cin >> startNumber >> endNumber;
 		startNumber -= 1;
-		endNumber -= 1;
+		/*endNumber -= 1;*/
 		
-		for (int j = startNumber; j <= endNumber; j++)
-		{
-			reverse(itr + startNumber, itr + endNumber);
-		}
+		std::reverse(itr + startNumber, itr + endNumber);
 	}
 
 	for (const auto& i : vec)
