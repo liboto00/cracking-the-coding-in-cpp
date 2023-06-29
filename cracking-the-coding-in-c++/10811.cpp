@@ -29,10 +29,10 @@ int main()
 		std::cin >> startNumber >> endNumber;
 		startNumber -= 1;
 		endNumber -= 1;
-
+		
 		for (int j = startNumber; j <= endNumber; j++)
 		{
-			reverse(vec.begin() + startNumber, vec.begin() + endNumber);
+			reverse(itr + startNumber, itr + endNumber);
 		}
 	}
 
