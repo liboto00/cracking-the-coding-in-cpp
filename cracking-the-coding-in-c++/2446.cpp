@@ -1,6 +1,6 @@
-// 백준 온라인 저지 2446번 https://www.acmicpc.net/problem/2446
-// 시간 제한 : 1초
-// 걸린 시간 : 0ms
+// 백준 온라인 저지 10811번 https://www.acmicpc.net/problem/10811
+// 제한 시간 : 1초
+// 실행 시간 : ms
 
 #include <iostream>
 #include <vector>
@@ -11,7 +11,9 @@ int main()
 	std::cin.tie(NULL);
 	std::cout.tie(NULL);
 
-	std::vector<int> array = {};
+	std::vector<int> vec;
+
+	vec.push_back(1);
 
 	int N;
 
