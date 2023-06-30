@@ -41,4 +41,6 @@ int main()
 			cout << i << "\n";
 		}
 	}
+	
+	delete[] primeNumber;
 }
