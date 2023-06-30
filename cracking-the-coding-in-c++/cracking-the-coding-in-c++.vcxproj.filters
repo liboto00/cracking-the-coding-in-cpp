@@ -30,6 +30,9 @@
     <ClCompile Include="11655.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="17478.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">
