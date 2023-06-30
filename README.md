@@ -11,7 +11,7 @@
   - [Dynamic memory allocation](https://modoocode.com/169)
   - [OOP](https://modoocode.com/172)
   - [String](https://modoocode.com/198)
-  - [STL](https://modoocode.com/223)
+  - [STL](https://modoocode.com/219)
   - [Thread](https://modoocode.com/269)
   - [Compile](https://modoocode.com/319)
 
