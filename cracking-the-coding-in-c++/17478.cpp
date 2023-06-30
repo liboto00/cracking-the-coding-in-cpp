@@ -1,6 +1,6 @@
 // 백준 온라인 저지 17478번 https://www.acmicpc.net/problem/17478
 // 제한 시간 : 1초
-// 실행 시간 : ms
+// 실행 시간 : 0ms
 
 #include <iostream>
 #include <string>
