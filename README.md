@@ -23,4 +23,5 @@
   - [Junior Graphics Programmer](https://erkaman.github.io/posts/junior_graphics_programmer_interview.html)
   - [Pearl Abyss Interview Simulation](https://www.youtube.com/watch?v=hohQLVYs3Pw&pp=ygUW7Y6E7Ja067mE7IqkIOyduO2EsOu3sA%3D%3D)
   - [Pearl Abyss Programmer Coding Test & Interview Tips](https://www.youtube.com/watch?v=w1kcHg-6XNU)
+  - [Pearl Abyss Engine/Platform Programmer Interview](https://www.youtube.com/watch?v=12ylj9lXkK0)
   - [Junior Client Programmer in South Korea](https://github.com/Romanticism-GameDeveloper/GameDeveloper-Client-Interview)
