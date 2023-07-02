@@ -22,6 +22,6 @@
   - [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?crid=1E59I76S8K0OJ&keywords=cracking+the+coding+interview&qid=1687845251&sprefix=cracking+the+coding+interview%2Caps%2C258&sr=8-1)
   - [Junior Graphics Programmer](https://erkaman.github.io/posts/junior_graphics_programmer_interview.html)
   - [Pearl Abyss Interview Simulation](https://www.youtube.com/watch?v=hohQLVYs3Pw&pp=ygUW7Y6E7Ja067mE7IqkIOyduO2EsOu3sA%3D%3D)
-  - [Pearl Abyss Programmer Coding Test & Interview Tips](https://www.youtube.com/watch?v=w1kcHg-6XNU)
-  - [Pearl Abyss Engine/Platform Programmer Interview](https://www.youtube.com/watch?v=12ylj9lXkK0)
+  - [Pearl Abyss Programmer coding test & interview tips](https://www.youtube.com/watch?v=w1kcHg-6XNU)
+  - [Pearl Abyss Engine/Platform Programmer interview](https://www.youtube.com/watch?v=12ylj9lXkK0)
   - [Junior Client Programmer in South Korea](https://github.com/Romanticism-GameDeveloper/GameDeveloper-Client-Interview)
