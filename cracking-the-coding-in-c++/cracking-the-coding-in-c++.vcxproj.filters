@@ -36,10 +36,13 @@
     <ClCompile Include="11576.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="2563%28x%29.cpp">
+    <ClCompile Include="2563_not_yet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="11729.cpp">
+    <ClCompile Include="11729_not_yet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="10828.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
