@@ -3,11 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# Visual Studio solution, project reference file
-*.sln
-*.vcxproj.filters
-*.vcxproj
-
 # User-specific files
 *.rsuser
 *.suo
@@ -366,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Visual Studio solution, project reference file
+*.sln
+*.vcxproj.filters
+*.vcxproj
