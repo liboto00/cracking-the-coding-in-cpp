@@ -1,5 +1,0 @@
-- [Unity](https://blog.unity.com/devblog)
-- [Unreal Engine](https://www.unrealengine.com/en-US/feed/tech-blog)
-- [NVIDIA](https://developer.nvidia.com/blog/search-posts/?faceted_search_industry_str=Gaming)
-- [Riot Games](https://technology.riotgames.com/)
-- [Netmarble](https://netmarble.engineering/)
