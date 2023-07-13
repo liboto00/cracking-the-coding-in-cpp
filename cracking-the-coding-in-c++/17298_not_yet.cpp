@@ -1,47 +1,42 @@
-// ¹éÁØ ¿Â¶óÀÎ ÀúÁö 17298¹ø https://www.acmicpc.net/problem/17298
-// Á¦ÇÑ ½Ã°£ : 1ÃÊ
-// ½ÇÇà ½Ã°£ : ms
+// ë°±ì¤€ ì˜¨ë¼ì¸ ì €ì§€ 17298ë²ˆ https://www.acmicpc.net/problem/17298
+// ì œí•œ ì‹œê°„ : 1ì´ˆ
+// ì‹¤í–‰ ì‹œê°„ : ms
 
-// ¼ö¿­: A = A1, A2, ..., AN
-// 1. Aiº¸´Ù Å« ¼ö°¡ ¿À¸¥ÂÊ¿¡ Á¸ÀçÇÏ´ÂÁö ¿©ºÎ
-// 2 - 1. Yes : Å« ¼ö Áß °¡Àå ¿ÞÂÊ¿¡ ÀÖ´Â ¼ö Ãâ·Â
-// 2 - 2. No : -1
+// ì˜¤í°ìˆ˜ NGE(i) : Aië³´ë‹¤ ì˜¤ë¥¸ìª½ì— ìžˆìœ¼ë©´ì„œ í° ìˆ˜ ì¤‘ì—ì„œ ê°€ìž¥ ì™¼ìª½ì— ìžˆëŠ” ìˆ˜, ê·¸ëŸ¬í•œ ìˆ˜ê°€ ì—†ëŠ” ê²½ìš° ì˜¤í°ìˆ˜ëŠ” -1
+// e.g. A = [3, 5, 2, 7], NGE(1) = 5, NGE(2) = 7, NGE(3) = 7, NGE(4) = -1
+//		A = [9, 5, 4, 8], NGE(1) = -1, NGE(2) = 8, NGE(3) = 8, NGE(4) = -1
 
-// ¹®Á¦Á¡ : ÃÖ´ë 1,000,000 Å©±âÀÇ ¼ö¿­¿¡ ÃÖ´ë 1,000,000ÀÌ¶ó´Â ¼ýÀÚ¸¦ °¡Áö´Â ¿ø¼ÒµéÀÌ Á¸ÀçÇÑ´Ù.
-// A1ÀÇ ¼öº¸´Ù Å« ¼ö¸¦ Ã£´Â´Ù°í °¡Á¤ÇßÀ» ¶§, ÃÖ¾ÇÀÇ °æ¿ì 1,000,000¹ø ¹Ýº¹ÇØ¾ß ÇÑ´Ù.
-// ÀÌ¶§, AnÀÇ nÀÌ 1,000,000ÀÌ¸é, Å« ¼ö¸¦ Ã£´Â °úÁ¤ 1,000,000¹øÀ» 1,000,000¹ø °¡±îÀÌ ÇØ¾ßÇÒ ¼öµµ ÀÖ´Ù.
-// Áï, ½Ã°£ ÃÊ°ú°¡ µÈ´Ù.
-
-// vectorÀÇ find_if »ç¿ë °á°ú : ½Ã°£ º¹Àâµµ°¡ O(n)ÀÌ±â ¶§¹®¿¡ for loop°ú »ç¿ëÇßÀ» ¶§, ½Ã°£ º¹Àâµµ°¡ O(n^2)ÀÌ µÇ¹Ç·Î »ç¿ëÇÏ¸é ½Ã°£ ÃÊ°ú°¡ µÈ´Ù.
-// stack »ç¿ë °á°ú : 
+// í•µì‹¬ : N (1 â‰¤ N â‰¤ 1,000,000)ì´ê¸° ë•Œë¬¸ì— 2ì¤‘ ë°˜ë³µë¬¸ ì´ìƒì´ë©´ ì‹œê°„ ì´ˆê³¼ê°€ ë˜ëŠ” ì ì„ ìœ ì˜í•´ì•¼ í•œë‹¤.
 
 #include <iostream>
 #include <vector>
+#include <stack>
 using namespace std;
-
-int a_i;
-bool isNGE(int num)
-{
-	return num > a_i;
-}
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int N; // ¼ö¿­ÀÇ Å©±â
+	int N;
+	vector<int> sequence; // ìˆ˜ì—´ì„ ë‹´ì„ ë™ì ë°°ì—´
+	stack<int> stack;
 	
-	cin >> N;
-	vector<int> A(N); // ¼ö¿­ÀÌ ÀúÀåµÉ µ¿Àû¹è¿­ (ºÒÇÊ¿äÇÑ ¸Þ¸ð¸® Áõ¼³ÀÌ ¹Ýº¹µÇÁö ¾Ê°Ô, ÀÔ·Â ¹ÞÀº N¸¸Å­ Å©±â ¼³Á¤)
+	
+	cin >> N; // ìˆ˜ì—´ì˜ í¬ê¸° N ìž…ë ¥
+	int num; // ìˆ˜ì—´ì˜ ê° ê°’ì„ ë‹´ì„ ë³€ìˆ˜
 	for (int i = 0; i < N; i++)
 	{
-		cin >> A[i];
+		cin >> num;
+		sequence.push_back(num); // ë™ì ë°°ì—´ì— ìˆ˜ì—´ì˜ ê° ê°’ ë„£ê¸°
 	}
 
 	for (int i = 0; i < N; i++)
 	{
+		while (true)
+		{
+			// Aiì™€ ê·¸ ì˜¤ë¥¸ìª½ì˜ ê°’ì„ ìˆœì°¨ì ìœ¼ë¡œ ë¹„êµ -> í° ìˆ˜ë¥¼ ì²˜ìŒ ì°¾ìœ¼ë©´ ê·¸ ìˆ˜ë¥¼ ì¶œë ¥ í›„ iê°’ 1 ì¦ê°€
+			if (sequence[i] < sequence[i])
+			{
+
+			}
+		}
 	}
-	
 }
