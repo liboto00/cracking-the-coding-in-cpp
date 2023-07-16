@@ -2,7 +2,7 @@
 // 제한 시간 : 0.5초
 // 실행 시간 : 0ms
 
-// 핵심 : stack이 비어있는지, 혹은 비어있지 않다면 들어있는 정수의 개수가 몇 개인지 판단
+// 핵심 : stack이 비어있는지, 혹은 비어있지 않다면 들어있는 정수의 개수가 몇 개인지 판단 + stack pointer 개념을 이용
 
 #include <iostream>
 using namespace std;
