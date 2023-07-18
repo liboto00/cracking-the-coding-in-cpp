@@ -1,6 +1,6 @@
-// น้มุ ฟยถ๓ภฮ ภ๚ม๖ 11729น๘ https://www.acmicpc.net/problem/11729
-// มฆวั ฝรฐฃ : 1รส
-// ฝววเ ฝรฐฃ : ms
+// ๋ฐฑ์ค€ ์จ๋ผ์ธ ์ €์ง€ 11729๋ฒ https://www.acmicpc.net/problem/11729
+// ์ ํ• ์๊ฐ : 1์ด
+// ์คํ– ์๊ฐ : ms
 
 #include <iostream>
 #include <vector>
