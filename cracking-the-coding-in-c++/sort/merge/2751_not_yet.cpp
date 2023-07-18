@@ -1,16 +1,16 @@
-// ¹éÁØ ¿Â¶óÀÎ ÀúÁö 2751¹ø https://www.acmicpc.net/problem/2751
-// Á¦ÇÑ ½Ã°£ : 2ÃÊ
-// ½ÇÇà ½Ã°£ : ms
+// ë°±ì¤€ ì˜¨ë¼ì¸ ì €ì§€ 2751ë²ˆ https://www.acmicpc.net/problem/2751
+// ì œí•œ ì‹œê°„ : 2ì´ˆ
+// ì‹¤í–‰ ì‹œê°„ : ms
 
 #include <iostream>
 #include <vector>
 // #include <algorithm>
 using namespace std;
 
-// i: Á¤·ÄµÈ ¿ŞÂÊ ¸®½ºÆ®¿¡ ´ëÇÑ ÀÎµ¦½º
-// j: Á¤·ÄµÈ ¿À¸¥ÂÊ ¸®½ºÆ®¿¡ ´ëÇÑ ÀÎµ¦½º
-// k: Á¤·ÄµÉ ¸®½ºÆ®¿¡ ´ëÇÑ ÀÎµ¦½º
-/* 2°³ÀÇ ÀÎÁ¢ÇÑ ¹è¿­ list[left...mid]¿Í list[mid+1...right]ÀÇ ÇÕº´ °úÁ¤ */
+// i: ì •ë ¬ëœ ì™¼ìª½ ë¦¬ìŠ¤íŠ¸ì— ëŒ€í•œ ì¸ë±ìŠ¤
+// j: ì •ë ¬ëœ ì˜¤ë¥¸ìª½ ë¦¬ìŠ¤íŠ¸ì— ëŒ€í•œ ì¸ë±ìŠ¤
+// k: ì •ë ¬ë  ë¦¬ìŠ¤íŠ¸ì— ëŒ€í•œ ì¸ë±ìŠ¤
+/* 2ê°œì˜ ì¸ì ‘í•œ ë°°ì—´ list[left...mid]ì™€ list[mid+1...right]ì˜ í•©ë³‘ ê³¼ì • */
 void merge(vector<int> stack, int left, int mid, int right)
 {
 	vector<int> sorted(1000, 0);
@@ -19,7 +19,7 @@ void merge(vector<int> stack, int left, int mid, int right)
 	j = mid + 1;
 	k = left;
 
-	/* ºĞÇÒ Á¤·ÄµÈ listÀÇ ÇÕº´ */
+	/* ë¶„í•  ì •ë ¬ëœ listì˜ í•©ë³‘ */
 	while (i <= mid && j <= right)
 	{
 		if (stack[i] <= stack[j])
@@ -28,20 +28,20 @@ void merge(vector<int> stack, int left, int mid, int right)
 			sorted[k++] = stack[j++];
 	}
 
-	// ³²¾Æ ÀÖ´Â °ªµéÀ» ÀÏ°ı º¹»ç
+	// ë‚¨ì•„ ìˆëŠ” ê°’ë“¤ì„ ì¼ê´„ ë³µì‚¬
 	if (i > mid)
 	{
 		for (l = j; l <= right; l++)
 			sorted[k++] = stack[l];
 	}
-	// ³²¾Æ ÀÖ´Â °ªµéÀ» ÀÏ°ı º¹»ç
+	// ë‚¨ì•„ ìˆëŠ” ê°’ë“¤ì„ ì¼ê´„ ë³µì‚¬
 	else
 	{
 		for (l = i; l <= mid; l++)
 			sorted[k++] = stack[l];
 	}
 
-	// ¹è¿­ sorted[](ÀÓ½Ã ¹è¿­)ÀÇ ¸®½ºÆ®¸¦ ¹è¿­ stack[]·Î Àçº¹»ç
+	// ë°°ì—´ sorted[](ì„ì‹œ ë°°ì—´)ì˜ ë¦¬ìŠ¤íŠ¸ë¥¼ ë°°ì—´ stack[]ë¡œ ì¬ë³µì‚¬
 	for (l = left; l <= right; l++)
 	{
 		stack[l] = sorted[l];
@@ -54,10 +54,10 @@ void merge_sort(vector<int> stack, int left, int right)
 
 	if (left < right)
 	{
-		mid = (left + right) / 2; // Áß°£ À§Ä¡¸¦ °è»êÇÏ¿© ¸®½ºÆ®¸¦ ±Õµî ºĞÇÒ -ºĞÇÒ(Divide)
-		merge_sort(stack, left, mid); // ¾ÕÂÊ ºÎºĞ ¸®½ºÆ® Á¤·Ä -Á¤º¹(Conquer)
-		merge_sort(stack, mid + 1, right); // µÚÂÊ ºÎºĞ ¸®½ºÆ® Á¤·Ä -Á¤º¹(Conquer)
-		merge(stack, left, mid, right); // Á¤·ÄµÈ 2°³ÀÇ ºÎºĞ ¹è¿­À» ÇÕº´ÇÏ´Â °úÁ¤ -°áÇÕ(Combine)
+		mid = (left + right) / 2; // ì¤‘ê°„ ìœ„ì¹˜ë¥¼ ê³„ì‚°í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ë¥¼ ê· ë“± ë¶„í•  -ë¶„í• (Divide)
+		merge_sort(stack, left, mid); // ì•ìª½ ë¶€ë¶„ ë¦¬ìŠ¤íŠ¸ ì •ë ¬ -ì •ë³µ(Conquer)
+		merge_sort(stack, mid + 1, right); // ë’¤ìª½ ë¶€ë¶„ ë¦¬ìŠ¤íŠ¸ ì •ë ¬ -ì •ë³µ(Conquer)
+		merge(stack, left, mid, right); // ì •ë ¬ëœ 2ê°œì˜ ë¶€ë¶„ ë°°ì—´ì„ í•©ë³‘í•˜ëŠ” ê³¼ì • -ê²°í•©(Combine)
 	}
 }
 
