@@ -1,6 +1,6 @@
-// น้มุ ฟยถ๓ภฮ ภ๚ม๖ 10798น๘ https://www.acmicpc.net/problem/10798
-// มฆวั ฝรฐฃ : 1รส
-// ฝววเ ฝรฐฃ : 0ms
+// ๋ฐฑ์ค€ ์จ๋ผ์ธ ์ €์ง€ 10798๋ฒ https://www.acmicpc.net/problem/10798
+// ์ ํ• ์๊ฐ : 1์ด
+// ์คํ– ์๊ฐ : 0ms
 
 #include <iostream>
 #include <string>
