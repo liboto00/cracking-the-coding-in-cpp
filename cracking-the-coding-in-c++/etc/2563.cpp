@@ -1,6 +1,6 @@
-// น้มุ ฟยถ๓ภฮ ภ๚ม๖ 2563น๘ https://www.acmicpc.net/problem/2563
-// มฆวั ฝรฐฃ : 1รส
-// ฝววเ ฝรฐฃ : 0ms
+// ๋ฐฑ์ค€ ์จ๋ผ์ธ ์ €์ง€ 2563๋ฒ https://www.acmicpc.net/problem/2563
+// ์ ํ• ์๊ฐ : 1์ด
+// ์คํ– ์๊ฐ : 0ms
 
 #include <iostream>
 #include <vector>
