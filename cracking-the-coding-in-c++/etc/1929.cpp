@@ -1,6 +1,6 @@
-// น้มุ ฟยถ๓ภฮ ภ๚ม๖ 1929น๘ https://www.acmicpc.net/problem/1929
-// มฆวั ฝรฐฃ : 2รส
-// ฝววเ ฝรฐฃ : 12ms
+// ๋ฐฑ์ค€ ์จ๋ผ์ธ ์ €์ง€ 1929๋ฒ https://www.acmicpc.net/problem/1929
+// ์ ํ• ์๊ฐ : 2์ด
+// ์คํ– ์๊ฐ : 12ms
 
 #include <iostream>
 #include <vector>
