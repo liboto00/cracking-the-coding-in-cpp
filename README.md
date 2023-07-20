@@ -26,4 +26,5 @@
   - [Pearl Abyss interview simulation](https://www.youtube.com/watch?v=hohQLVYs3Pw&pp=ygUW7Y6E7Ja067mE7IqkIOyduO2EsOu3sA%3D%3D)
   - [Pearl Abyss Programmer coding test & interview tips](https://www.youtube.com/watch?v=w1kcHg-6XNU)
   - [Pearl Abyss Engine/Platform Programmer interview](https://www.youtube.com/watch?v=12ylj9lXkK0)
+  - [Interview Question for Beginner](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
   - [Junior Client Programmer in South Korea](https://github.com/Romanticism-GameDeveloper/GameDeveloper-Client-Interview)
