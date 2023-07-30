@@ -367,6 +367,4 @@ FodyWeavers.xsd
 *.vcxproj.filters
 *.vcxproj
 
-# input.txt and output.txt
-input.txt
-output.txt
+
