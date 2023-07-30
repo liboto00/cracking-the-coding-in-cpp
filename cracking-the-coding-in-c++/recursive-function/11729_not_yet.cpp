@@ -14,5 +14,5 @@ int main()
 
 	int N;
 	cin >> N;
-	
+	 
 }
