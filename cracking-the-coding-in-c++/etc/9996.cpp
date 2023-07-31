@@ -1,6 +1,6 @@
-// ¹éÁØ ¿Â¶óÀÎ ÀúÁö 9996¹ø https://www.acmicpc.net/problem/9996
-// Á¦ÇÑ ½Ã°£ : 1ÃÊ
-// ½ÇÇà ½Ã°£ : 0ms
+// ë°±ì¤€ ì˜¨ë¼ì¸ ì €ì§€ 9996ë²ˆ https://www.acmicpc.net/problem/9996
+// ì œí•œ ì‹œê°„ : 1ì´ˆ
+// ì‹¤í–‰ ì‹œê°„ : 0ms
 
 #include <iostream>
 #include <vector>
@@ -47,20 +47,20 @@ int main()
 		fWord = words[i].substr(0, patternBeforeAsterisk.size());
 		bWord = words[i].substr(words[i].size() - patternAfterAsterisk.size());
 
-		// pattern Áß * Àü¿¡ ³ª¿Â pattern°ú °°Àº °ªÀÌ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é,
+		// pattern ì¤‘ * ì „ì— ë‚˜ì˜¨ patternê³¼ ê°™ì€ ê°’ì´ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´,
 		if (fWord.find(patternBeforeAsterisk) == string::npos)
 		{
 			cout << "NE" << '\n';
 		}
-		// Á¸ÀçÇÏ¸é,
+		// ì¡´ì¬í•˜ë©´,
 		else
 		{
-			// pattern Áß * ÈÄ¿¡ ³ª¿Â pattern°ú °°Àº °ªÀÌ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é,
+			// pattern ì¤‘ * í›„ì— ë‚˜ì˜¨ patternê³¼ ê°™ì€ ê°’ì´ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´,
 			if (bWord.find(patternAfterAsterisk) == string::npos)
 			{
 				cout << "NE" << '\n';
 			}
-			// Á¸ÀçÇÏ¸é,
+			// ì¡´ì¬í•˜ë©´,
 			else
 			{
 				cout << "DA" << '\n';
