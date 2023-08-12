@@ -1,6 +1,6 @@
-// น้มุ ฟยถ๓ภฮ ภ๚ม๖ 11726น๘ https://www.acmicpc.net/problem/11726
-// มฆวั ฝรฐฃ : 1รส
-// ฝววเ ฝรฐฃ : 0ms
+// ๋ฐฑ์ค€ ์จ๋ผ์ธ ์ €์ง€ 11726๋ฒ https://www.acmicpc.net/problem/11726
+// ์ ํ• ์๊ฐ : 1์ด
+// ์คํ– ์๊ฐ : 0ms
 
 #include <iostream>
 using namespace std;
