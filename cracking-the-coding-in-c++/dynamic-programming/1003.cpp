@@ -1,9 +1,9 @@
-// ¹éÁØ ¿Â¶óÀÎ ÀúÁö 1003¹ø https://www.acmicpc.net/problem/1003
-// Á¦ÇÑ ½Ã°£ : 0.25 ÃÊ (Ãß°¡ ½Ã°£ ¾øÀ½)
-// ½ÇÇà ½Ã°£ : 0ms
+// ë°±ì¤€ ì˜¨ë¼ì¸ ì €ì§€ 1003ë²ˆ https://www.acmicpc.net/problem/1003
+// ì œí•œ ì‹œê°„ : 0.25 ì´ˆ (ì¶”ê°€ ì‹œê°„ ì—†ìŒ)
+// ì‹¤í–‰ ì‹œê°„ : 0ms
 
-// ¹®Á¦Á¡ 1 : ¸Þ¸ð¸® Á¦ÇÑ 128mb ÃÊ°ú
-// ÇØ°á 1 : °¢ Å×½ºÆ® ÄÉÀÌ½º¸¶´Ù vector¸¦ ÃÊ±âÈ­ÇÏ¸é, °è»êµÈ °á°ú°¡ ¸Þ¸ð¸®¿¡ °è¼Ó ½×ÀÌ¹Ç·Î ÇÑ ¹ø¸¸ ÃÊ±âÈ­
+// ë¬¸ì œì  1 : ë©”ëª¨ë¦¬ ì œí•œ 128mb ì´ˆê³¼
+// í•´ê²° 1 : ê° í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ë§ˆë‹¤ vectorë¥¼ ì´ˆê¸°í™”í•˜ë©´, ê³„ì‚°ëœ ê²°ê³¼ê°€ ë©”ëª¨ë¦¬ì— ê³„ì† ìŒ“ì´ë¯€ë¡œ í•œ ë²ˆë§Œ ì´ˆê¸°í™”
 
 #include <iostream>
 using namespace std;
