@@ -1,6 +1,6 @@
-// ¹éÁØ ¿Â¶óÀÎ ÀúÁö 2108¹ø https://www.acmicpc.net/problem/2108
-// Á¦ÇÑ ½Ã°£ : 2ÃÊ
-// ½ÇÇà ½Ã°£ : ms
+// ë°±ì¤€ ì˜¨ë¼ì¸ ì €ì§€ 2108ë²ˆ https://www.acmicpc.net/problem/2108
+// ì œí•œ ì‹œê°„ : 2ì´ˆ
+// ì‹¤í–‰ ì‹œê°„ : ms
 
 #include <iostream>
 #include <vector>
@@ -73,7 +73,7 @@ int main()
 		cin >> numArr[i];
 	}
 
-	// ¼öÀÇ °³¼ö°¡ 1°³ÀÎ °æ¿ì ¿¹¿Ü Ã³¸®
+	// ìˆ˜ì˜ ê°œìˆ˜ê°€ 1ê°œì¸ ê²½ìš° ì˜ˆì™¸ ì²˜ë¦¬
 	if (N == 1)
 	{
 		cout << numArr[0] << '\n' << numArr[0] << '\n' << numArr[0] << '\n' << 0;
@@ -83,7 +83,7 @@ int main()
 	
 	sort(numArr.begin(), numArr.end());
 
-	// »ê¼úÆò±Õ
+	// ì‚°ìˆ í‰ê· 
 	float avg = 0;
 	for (int i = 0; i < N; i++)
 	{
@@ -93,12 +93,12 @@ int main()
 
 	cout << round(avg) << '\n';
 
-	// Áß¾Ó°ª
+	// ì¤‘ì•™ê°’
 	cout << numArr[N / 2] << '\n';
 
-	// ÃÖºó°ª
+	// ìµœë¹ˆê°’
 	cout << FindMode(numArr) << '\n';
 
-	// ¹üÀ§
+	// ë²”ìœ„
 	cout << *(numArr.end() - 1) - *numArr.begin();
 }
