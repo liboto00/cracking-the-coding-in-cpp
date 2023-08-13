@@ -1,6 +1,6 @@
-// น้มุ ฟยถ๓ภฮ ภ๚ม๖ 9095น๘ https://www.acmicpc.net/problem/9095
-// มฆวั ฝรฐฃ : 1รส (ร฿ฐก ฝรฐฃ พ๘ภฝ)
-// ฝววเ ฝรฐฃ : 0ms
+// ๋ฐฑ์ค€ ์จ๋ผ์ธ ์ €์ง€ 9095๋ฒ https://www.acmicpc.net/problem/9095
+// ์ ํ• ์๊ฐ : 1์ด (์ถ”๊ฐ€ ์๊ฐ ์—์)
+// ์คํ– ์๊ฐ : 0ms
 
 #include <iostream>
 using namespace std;
