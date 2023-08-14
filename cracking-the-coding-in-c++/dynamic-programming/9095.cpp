@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-int arr[11] = {0, };
+int arr[11] = { 0, };
 
 int OneTwoThree(int n)
 {
@@ -24,6 +24,7 @@ int OneTwoThree(int n)
 		}
 		else
 		{
+			arr[n] = OneTwoThree(n - 1) + OneTwoThree(n - 2) + OneTwoThree(n - 3);
 			return OneTwoThree(n - 1) + OneTwoThree(n - 2) + OneTwoThree(n - 3);
 		}
 	}
