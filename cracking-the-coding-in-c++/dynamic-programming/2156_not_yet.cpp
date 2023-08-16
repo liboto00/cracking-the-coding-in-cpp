@@ -1,6 +1,6 @@
-// น้มุ ฟยถ๓ภฮ ภ๚ม๖ 2156น๘ https://www.acmicpc.net/problem/2156
-// มฆวั ฝรฐฃ : 2รส
-// ฝววเ ฝรฐฃ : ms
+// ๋ฐฑ์ค€ ์จ๋ผ์ธ ์ €์ง€ 2156๋ฒ https://www.acmicpc.net/problem/2156
+// ์ ํ• ์๊ฐ : 2์ด
+// ์คํ– ์๊ฐ : ms
 
 #include <iostream>
 using namespace std;
