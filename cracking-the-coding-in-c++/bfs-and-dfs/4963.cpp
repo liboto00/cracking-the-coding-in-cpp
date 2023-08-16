@@ -1,6 +1,6 @@
-// ¹éÁØ ¿Â¶óÀÎ ÀúÁö 4963¹ø https://www.acmicpc.net/problem/4963
-// Á¦ÇÑ ½Ã°£ : 1ÃÊ
-// ½ÇÇà ½Ã°£ : 0ms
+// ë°±ì¤€ ì˜¨ë¼ì¸ ì €ì§€ 4963ë²ˆ https://www.acmicpc.net/problem/4963
+// ì œí•œ ì‹œê°„ : 1ì´ˆ
+// ì‹¤í–‰ ì‹œê°„ : 0ms
 
 #include <iostream>
 #include <vector>
@@ -32,7 +32,7 @@ int main()
 		vector<vector <int>> territory(50, vector<int>(50, 0));
 		vector<vector <int>> visitedArea(50, vector<int>(50, 0));
 
-		// ¶¥(1), ¹Ù´Ù(0) ÀÔ·Â
+		// ë•…(1), ë°”ë‹¤(0) ì…ë ¥
 		for (int y = 0; y < h; y++)
 		{
 			for (int x = 0; x < w; x++)
@@ -47,7 +47,7 @@ int main()
 		{
 			for (int y = 0; y < h; y++)
 			{
-				// ¶¥ÀÌ°í, ¾ÆÁ÷ ¹æ¹®ÇÏÁö ¾Ê¾Ò´Ù¸é,
+				// ë•…ì´ê³ , ì•„ì§ ë°©ë¬¸í•˜ì§€ ì•Šì•˜ë‹¤ë©´,
 				if (territory[y][x] == 1 && !visitedArea[y][x])
 				{
 					visitedArea[y][x] = 1;
@@ -64,10 +64,10 @@ int main()
 							nextY = nowY + dy[i];
 							nextX = nowX + dx[i];
 
-							if ((0 <= nextX && nextX < w) && // w ¹üÀ§ ¾È¿¡ ÀÖ´ÂÁö È®ÀÎ
-								(0 <= nextY && nextY < h) && // h ¹üÀ§ ¾È¿¡ ÀÖ´ÂÁö È®ÀÎ
-								territory[nextY][nextX] == 1 && // ÀÎÁ¢ÇÑ °÷ÀÌ ¶¥ÀÌ°í,
-								!visitedArea[nextY][nextX] // ¾ÆÁ÷ ¹æ¹®ÇÏÁö ¾Ê¾Ò´Ù¸é,
+							if ((0 <= nextX && nextX < w) && // w ë²”ìœ„ ì•ˆì— ìˆëŠ”ì§€ í™•ì¸
+								(0 <= nextY && nextY < h) && // h ë²”ìœ„ ì•ˆì— ìˆëŠ”ì§€ í™•ì¸
+								territory[nextY][nextX] == 1 && // ì¸ì ‘í•œ ê³³ì´ ë•…ì´ê³ ,
+								!visitedArea[nextY][nextX] // ì•„ì§ ë°©ë¬¸í•˜ì§€ ì•Šì•˜ë‹¤ë©´,
 								)
 							{
 								visitedArea[nextY][nextX] = 1;
@@ -82,7 +82,7 @@ int main()
 
 		cout << numOfLand << '\n';
 		
-		// ³Êºñ w, ³ôÀÌ h ÀÔ·Â
+		// ë„ˆë¹„ w, ë†’ì´ h ì…ë ¥
 		cin >> w >> h;
 	}
 }
