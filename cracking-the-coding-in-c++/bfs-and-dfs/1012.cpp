@@ -1,6 +1,6 @@
-// ¹éÁØ ¿Â¶óÀÎ ÀúÁö 1012¹ø https://www.acmicpc.net/problem/1012
-// Á¦ÇÑ ½Ã°£ : 1ÃÊ
-// ½ÇÇà ½Ã°£ : 0ms
+// ë°±ì¤€ ì˜¨ë¼ì¸ ì €ì§€ 1012ë²ˆ https://www.acmicpc.net/problem/1012
+// ì œí•œ ì‹œê°„ : 1ì´ˆ
+// ì‹¤í–‰ ì‹œê°„ : 0ms
 
 #include <iostream>
 #include <vector>
@@ -20,14 +20,14 @@ int main()
 	queue<p> q;
 	int x, y, nowX, nowY;
 
-	// »óÇÏÁÂ¿ì¸¦ ³ªÅ¸³»´Â ¹è¿­
+	// ìƒí•˜ì¢Œìš°ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ë°°ì—´
 	int dy[4] = { 0, 0, -1, 1 };
 	int dx[4] = { 1, -1, 0, 0 };
 	int nextY, nextX;
 
 	int minOfEarthworm;
 
-	// test case¸¸Å­ ¹İº¹
+	// test caseë§Œí¼ ë°˜ë³µ
 	cin >> testCase;
 	for (int i = 0; i < testCase; i++)
 	{
@@ -38,7 +38,7 @@ int main()
 
 		cin >> M >> N >> K;
 
-		// ¹èÃß¹ç¿¡ ÀÖ´Â ¹èÃß¸¦ 1·Î Ç¥½Ã, ¾ø´Ù¸é 0
+		// ë°°ì¶”ë°­ì— ìˆëŠ” ë°°ì¶”ë¥¼ 1ë¡œ í‘œì‹œ, ì—†ë‹¤ë©´ 0
 		for (int j = 0; j < K; j++)
 		{
 			cin >> x >> y;
@@ -49,13 +49,13 @@ int main()
 		{
 			for (int y = 0; y < N; y++)
 			{
-				// ¹èÃß°¡ ÀÖ°í, ¹æ¹®ÇÑ ÀûÀÌ ¾ø´Ù¸é,
+				// ë°°ì¶”ê°€ ìˆê³ , ë°©ë¬¸í•œ ì ì´ ì—†ë‹¤ë©´,
 				if (aFieldOfCabbage[y][x] == 1 && !visitedSection[y][x])
 				{
 					q.push(make_pair(y, x));
 					visitedSection[y][x] = 1;
 
-					// queue°¡ ºñ¾îÀÖÀ» ¶§±îÁö ¹İº¹
+					// queueê°€ ë¹„ì–´ìˆì„ ë•Œê¹Œì§€ ë°˜ë³µ
 					while (!q.empty())
 					{
 						nowY = q.front().first;
@@ -67,10 +67,10 @@ int main()
 							nextY = nowY + dy[k];
 							nextX = nowX + dx[k];
 
-							if ((0 <= nextX && nextX < M) // x ¹üÀ§ °Ë»ç
-								&& (0 <= nextY && nextY < N) // y ¹üÀ§ °Ë»ç
-								&& (aFieldOfCabbage[nextY][nextX] == 1) // ´ÙÀ½ ÁöÁ¡ÀÌ 1ÀÌ°í,
-								&& !visitedSection[nextY][nextX]) // ¹æ¹®ÇÑ ÀûÀÌ ¾ø´Ù¸é,
+							if ((0 <= nextX && nextX < M) // x ë²”ìœ„ ê²€ì‚¬
+								&& (0 <= nextY && nextY < N) // y ë²”ìœ„ ê²€ì‚¬
+								&& (aFieldOfCabbage[nextY][nextX] == 1) // ë‹¤ìŒ ì§€ì ì´ 1ì´ê³ ,
+								&& !visitedSection[nextY][nextX]) // ë°©ë¬¸í•œ ì ì´ ì—†ë‹¤ë©´,
 							{
 								visitedSection[nextY][nextX] = 1;
 								q.push(make_pair(nextY, nextX));
