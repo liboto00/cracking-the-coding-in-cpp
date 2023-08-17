@@ -1,6 +1,6 @@
-// ¹éÁØ ¿Â¶óÀÎ ÀúÁö 2667¹ø https://www.acmicpc.net/problem/2667
-// Á¦ÇÑ ½Ã°£ : 1ÃÊ
-// ½ÇÇà ½Ã°£ : 0ms
+// ë°±ì¤€ ì˜¨ë¼ì¸ ì €ì§€ 2667ë²ˆ https://www.acmicpc.net/problem/2667
+// ì œí•œ ì‹œê°„ : 1ì´ˆ
+// ì‹¤í–‰ ì‹œê°„ : 0ms
 
 #include <iostream>
 #include <sstream>
@@ -58,7 +58,7 @@ int main()
 				visitedSection[y][x] = 1;
 				q.push(make_pair(y, x));
 
-				// ´ÜÁö³» ÁıÀÇ ¼ö Ä«¿îÆ®
+				// ë‹¨ì§€ë‚´ ì§‘ì˜ ìˆ˜ ì¹´ìš´íŠ¸
 				numOfHouse[orderOfComplex]++;
 
 				while (!q.empty())
@@ -82,7 +82,7 @@ int main()
 							visitedSection[nextY][nextX] = 1;
 							q.push(make_pair(nextY, nextX));
 
-							// ´ÜÁö³» ÁıÀÇ ¼ö Ä«¿îÆ®
+							// ë‹¨ì§€ë‚´ ì§‘ì˜ ìˆ˜ ì¹´ìš´íŠ¸
 							numOfHouse[orderOfComplex]++;
 						}
 					}
