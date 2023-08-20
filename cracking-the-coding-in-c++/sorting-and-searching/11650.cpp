@@ -1,6 +1,6 @@
-// น้มุ ฟยถ๓ภฮ ภ๚ม๖ 11650น๘ https://www.acmicpc.net/problem/11650
-// มฆวั ฝรฐฃ : 1รส
-// ฝววเ ฝรฐฃ : 48ms
+๏ปฟ// ๋ฐฑ์ค€ ์จ๋ผ์ธ ์ €์ง€ 11650๋ฒ https://www.acmicpc.net/problem/11650
+// ์ ํ• ์๊ฐ : 1์ด
+// ์คํ– ์๊ฐ : 48ms
 #include <iostream>
 #include <vector>
 #include <algorithm>
