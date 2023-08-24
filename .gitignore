@@ -363,10 +363,10 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Visual Studio solution, project reference file
-#*.sln
-#*.vcxproj.filters
-#*.vcxproj
+*.sln
+*.vcxproj.filters
+*.vcxproj
 
 # input.txt and output.txt
-#input.txt
-#output.txt
+input.txt
+output.txt
