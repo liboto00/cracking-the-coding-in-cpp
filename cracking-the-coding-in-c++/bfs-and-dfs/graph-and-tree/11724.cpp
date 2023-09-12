@@ -1,4 +1,4 @@
-// 백준 온라인 저지 1012번 https://www.acmicpc.net/problem/1012
+// 백준 온라인 저지 11724번 https://www.acmicpc.net/problem/11724
 // 제한 시간 : 3초
 // 실행 시간 : 84ms
 
