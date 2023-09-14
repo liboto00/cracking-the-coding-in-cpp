@@ -1,3 +1,7 @@
+// 백준 온라인 저지 14235번 https://www.acmicpc.net/problem/14235
+// 제한 시간 : 2초
+// 실행 시간 : ms
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
