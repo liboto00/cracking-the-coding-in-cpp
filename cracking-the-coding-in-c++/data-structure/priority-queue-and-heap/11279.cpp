@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
 void Swap(vector<int>& maxHeap, int x, int y)
