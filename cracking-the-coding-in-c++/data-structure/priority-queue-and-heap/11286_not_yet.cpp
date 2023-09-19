@@ -21,8 +21,13 @@ void Push(vector<int>& minHeap, int x)
 	int child = heapSize;
 	int parent = child / 2;
 
-	while (child > 1 && minHeap[child] < minHeap[parent])
+	while (child > 1 && abs(minHeap[child]) <= abs(minHeap[parent]))
 	{
+		if (abs(minHeap[child]) == abs(minHeap[parent]) && minHeap[child] >= minHeap[parent])
+		{
+			break;
+		}
+
 		Swap(minHeap, child, parent);
 		child = parent;
 		parent = child / 2;
@@ -43,7 +48,7 @@ int Pop(vector<int>& minHeap)
 	
 	if (child + 1 <= heapSize)
 	{
-		child = (minHeap[child] < minHeap[child + 1]) ? child : child + 1;
+		child = abs(minHeap[child]) < abs(minHeap[child + 1]) ? child : child + 1;
 	}
 	
 	while (child <= heapSize && minHeap[child] < minHeap[parent])
@@ -54,7 +59,7 @@ int Pop(vector<int>& minHeap)
 
 		if (child + 1 <= heapSize)
 		{
-			child = (minHeap[child] < minHeap[child + 1]) ? child : child + 1;
+			child = (abs(minHeap[child]) < abs(minHeap[child + 1])) ? child : child + 1;
 		}
 	}
 
@@ -67,7 +72,7 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	vector<int> minHeap(0, 1);
+	vector<int> minHeap(1, 0);
 
 	int N;
 	int x;
@@ -83,8 +88,14 @@ int main()
 		}
 		else
 		{
+			if (minHeap.size() == 1)
+			{
+				cout << 0 << '\n';
+				continue;
+			}
+
 			// 배열에서 절댓값이 가장 작은 값을 출력하고, 그 값을 배열에서 제거하는 경우
-			Pop(minHeap);
+			cout << Pop(minHeap) << '\n';
 		}
 	}
 }
