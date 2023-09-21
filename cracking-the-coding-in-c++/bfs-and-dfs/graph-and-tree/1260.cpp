@@ -9,40 +9,41 @@
 
 using namespace std;
 
-void dfs(vector<vector<int> >& link, vector<int>& visit, int V, int cnt)
+void dfs(vector<vector<int> >& link, vector<int>& visit, int V)
 {
+	int connectedNode;
+
 	for (int i = 0; i < link[V].size(); i++)
 	{
-		if (visit[link[V][i]] == 0)
+		connectedNode = link[V][i];
+
+		if (visit[connectedNode] == 0)
 		{
-			cout << ' ' << link[V][i];
-			visit[link[V][i]] = cnt;
-			dfs(link, visit, link[V][i], ++cnt);
+			cout << ' ' << connectedNode;
+			visit[connectedNode] = 1;
+			dfs(link, visit, connectedNode);
 		}
 	}
 }
 
 void bfs(vector<vector<int> >& link, vector<int>& visit, int V)
 {
-	if (visit[V] == 0)
+	queue<int> q;
+	q.push(V);
+	visit[V] = 1;
+
+	while (!q.empty())
 	{
-		queue<int> q;
-		q.push(V);
-		visit[V] = 1;
+		int now = q.front();
+		cout << now << ' ';
+		q.pop();
 
-		while (!q.empty())
+		for (int next : link[now])
 		{
-			int now = q.front();
-			cout << now << ' ';
-			q.pop();
-
-			for (int next : link[now])
+			if (visit[next] == 0)
 			{
-				if (visit[next] == 0)
-				{
-					q.push(next);
-					visit[next] = 1;
-				}
+				q.push(next);
+				visit[next] = 1;
 			}
 		}
 	}
@@ -76,7 +77,7 @@ int main()
 
 	visit_using_dfs[V] = 1;
 	cout << V;
-	dfs(link, visit_using_dfs, V, 2);
+	dfs(link, visit_using_dfs, V);
 
 	cout << '\n';
 
