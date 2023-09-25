@@ -6,21 +6,19 @@
 #include <vector>
 using namespace std;
 
-void dfs(vector<vector<int>> &list, vector<int>&visited, int nodeNum, int cnt)
+void dfs(vector<vector<int>>& list, vector<int>& visited, int start)
 {
-	for (int i = 0; i < list[nodeNum].size(); i++)
+	int connectedNode;
+
+	for (int i = 0; i < list[start].size(); i++)
 	{
-		if (visited[list[nodeNum][i]] == 0)
+		connectedNode = list[start][i];
+
+		if (visited[connectedNode] == 0)
 		{
-			// 방문 표시
-			visited[list[nodeNum][i]] = list[nodeNum][i];
-			cnt++;
-			if (cnt >= 4)
-			{
-				cout << 1;
-				break;
-			}
-			dfs(list, visited, nodeNum, cnt);
+			visited[connectedNode] = 1;
+			start = list[start][i];
+			dfs(list, visited, start);
 		}
 	}
 }
@@ -31,18 +29,31 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
+	// 첫째 줄에 사람의 수 N (5 ≤ N ≤ 2000)과 친구 관계의 수 M (1 ≤ M ≤ 2000)
 	int N, M, u, v;
 	cin >> N >> M;
 
 	vector<vector<int>> list(N + 1, vector <int>());
 	vector<int> visited(N + 1, 0);
 
-	for (int i = 0; i < N; i++)
+	// 친구의 관계 수 M만큼 반복
+	for (int i = 0; i < M; i++)
 	{
 		cin >> u >> v;
 		list[u].push_back(v);
 		list[v].push_back(u);
 	}
 
-	dfs(list, visited, N - 1, 0);
+	// 관계가 연속적으로 4번 이상 이어지면, 1 출력 아니면, 0 출력
+	for (int i = 0; i < M; i++)
+	{
+		// 새로 돌 때마다 매번 관계 카운팅을 초기화 해야한다.
+		dfs(list, visited, i);
+
+		// 방문처리 0으로 초기화
+		for (int j = 0; j < N + 1; j++)
+		{
+			visited[j] = 0;
+		}
+	}
 }

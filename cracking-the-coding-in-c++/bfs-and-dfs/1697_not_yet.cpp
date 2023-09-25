@@ -2,6 +2,8 @@
 // 제한 시간 : 2초
 // 실행 시간 : ms	
 
+// 문제점 : 한 사이클에서 하나의 길로만 쭉 queue에 쌓여서 bfs로 안 돈다.
+
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -74,8 +76,10 @@ int main()
 						}
 					}
 				}
-				minTime++;
 			}
+			minTime++;
 		}
 	}
+
+	cout << minTime;
 }
