@@ -12,20 +12,17 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 	
-	int N, M; // (1 ≤ N, M ≤ 1,000)
-	cin >> N >> M;
-
-	vector<vector<int>> board(N + 1, vector<int> (M + 1));
-	for (size_t y = 1; y < N + 1; y++)
+	int N, M, B;
+	cin >> N >> M >> B;
+	
+	vector<vector<int>> ground(N, vector<int>(M));
+	for (size_t y = 0; y < N; y++)
 	{
-		for (size_t x = 1; x < M + 1; x++)
+		for (size_t x = 0; x < M; x++)
 		{
-			cin >> board[y][x];
+			cin >> ground[y][x];
 		}
 	}
 
-	// 사탕을 가져오는 모든 경우의 수를 구해 최대값을 구하기
 
-	// 준규가 (r, c)에 있다고 가정했을 때,
-	// (r+1, c) 또는 (r, c+1) 또는 (r+1, c+1)로 이동한 경우로 나누어 생각하기
 }
