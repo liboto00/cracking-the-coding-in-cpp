@@ -20,6 +20,7 @@ void dfs(vector<vector<int>>& list, vector<int>& visited, int start)
 			start = list[start][i];
 			dfs(list, visited, start);
 		}
+		visited[connectedNode] = 0;
 	}
 }
 
@@ -49,11 +50,9 @@ int main()
 	{
 		// 새로 돌 때마다 매번 관계 카운팅을 초기화 해야한다.
 		dfs(list, visited, i);
-
-		// 방문처리 0으로 초기화
-		for (int j = 0; j < N + 1; j++)
+		if ()
 		{
-			visited[j] = 0;
+
 		}
 	}
 }
