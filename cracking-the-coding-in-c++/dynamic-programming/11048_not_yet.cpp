@@ -12,7 +12,7 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 	
-	int N, M; // (1 ¡Â N, M ¡Â 1, 000)
+	int N, M; // (1 ¡Â N, M ¡Â 1,000)
 	cin >> N >> M;
 
 	vector<vector<int>> board(N + 1, vector<int> (M + 1));
