@@ -6,24 +6,30 @@
 #include <vector>
 using namespace std;
 
-void Swap(vector<int>& minHeap, int x, int y)
+typedef pair<int, int> p;
+
+void Swap(vector<p>& minHeap, int x, int y)
 {
-	int temp = minHeap[x];
-	minHeap[x] = minHeap[y];
-	minHeap[y] = temp;
+	int absTemp = minHeap[x].first;
+	minHeap[x].first = minHeap[y].first;
+	minHeap[y].first = absTemp;
+
+	int temp = minHeap[x].second;
+	minHeap[x].second = minHeap[y].second;
+	minHeap[y].second = temp;
 }
 
-void Push(vector<int>& minHeap, int x)
+void Push(vector<p>& minHeap, int x)
 {
-	minHeap.push_back(x);
+	minHeap.push_back(make_pair(abs(x), x));
 
 	int heapSize = minHeap.size() - 1;
 	int child = heapSize;
 	int parent = child / 2;
 
-	while (child > 1 && abs(minHeap[child]) <= abs(minHeap[parent]))
+	while (child > 1 && minHeap[child].first <= minHeap[parent].first)
 	{
-		if (abs(minHeap[child]) == abs(minHeap[parent]) && minHeap[child] >= minHeap[parent])
+		if (minHeap[child].first == minHeap[parent].first && minHeap[child].second >= minHeap[parent].second)
 		{
 			break;
 		}
@@ -34,9 +40,9 @@ void Push(vector<int>& minHeap, int x)
 	}
 }
 
-int Pop(vector<int>& minHeap)
+int Pop(vector<p>& minHeap)
 {
-	int root = minHeap[1];
+	int root = minHeap[1].second;
 
 	int heapSize = minHeap.size() - 1;
 	Swap(minHeap, 1, heapSize);
@@ -48,18 +54,23 @@ int Pop(vector<int>& minHeap)
 	
 	if (child + 1 <= heapSize)
 	{
-		child = abs(minHeap[child]) < abs(minHeap[child + 1]) ? child : child + 1;
+		child = minHeap[child].first < minHeap[child + 1].first ? child : child + 1;
 	}
 	
-	while (child <= heapSize && minHeap[child] < minHeap[parent])
+	while (child <= heapSize && minHeap[child].first <= minHeap[parent].first)
 	{
+		if (minHeap[child].first == minHeap[parent].first && minHeap[child].second >= minHeap[parent].second)
+		{
+			break;
+		}
+
 		Swap(minHeap, child, parent);
 		parent = child;
 		child = parent * 2;
 
 		if (child + 1 <= heapSize)
 		{
-			child = (abs(minHeap[child]) < abs(minHeap[child + 1])) ? child : child + 1;
+			child = minHeap[child].first < minHeap[child + 1].first ? child : child + 1;
 		}
 	}
 
@@ -72,7 +83,7 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	vector<int> minHeap(1, 0);
+	vector<p> minHeap(1, make_pair(0, 0));
 
 	int N;
 	int x;
