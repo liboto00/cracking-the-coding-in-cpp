@@ -1,6 +1,6 @@
 // 백준 온라인 저지 11286번 https://www.acmicpc.net/problem/11286
 // 제한 시간 : 1초 (추가 시간 없음)
-// 실행 시간 : ms
+// 실행 시간 : 16ms
 
 #include <iostream>
 #include <vector>
@@ -54,7 +54,25 @@ int Pop(vector<p>& minHeap)
 	
 	if (child + 1 <= heapSize)
 	{
-		child = minHeap[child].first < minHeap[child + 1].first ? child : child + 1;
+		if (minHeap[child].first < minHeap[child + 1].first)
+		{
+			child = child;
+		}
+		else if (minHeap[child].first > minHeap[child + 1].first)
+		{
+			child = child + 1;
+		}
+		else
+		{
+			if (minHeap[child].second <= minHeap[child + 1].second)
+			{
+				child = child;
+			}
+			else
+			{
+				child = child + 1;
+			}
+		}
 	}
 	
 	while (child <= heapSize && minHeap[child].first <= minHeap[parent].first)
@@ -70,7 +88,25 @@ int Pop(vector<p>& minHeap)
 
 		if (child + 1 <= heapSize)
 		{
-			child = minHeap[child].first < minHeap[child + 1].first ? child : child + 1;
+			if (minHeap[child].first < minHeap[child + 1].first)
+			{
+				child = child;
+			}
+			else if (minHeap[child].first > minHeap[child + 1].first)
+			{
+				child = child + 1;
+			}
+			else
+			{
+				if (minHeap[child].second <= minHeap[child + 1].second)
+				{
+					child = child;
+				}
+				else
+				{
+					child = child + 1;
+				}
+			}
 		}
 	}
 
