@@ -19,15 +19,10 @@ int main()
 
 	int n;// (1 ≤ n ≤ 100,000)
 
-	vector<int> using1(2, 0);
-	vector<int> using2(2, 0);
-	vector<int> using3(2, 0);
-	vector<int> using4(2, 0);
-	vector<int> using5(2, 0);
-	vector<int> using6(2, 0);
-	vector<int> using7(2, 0);
-	vector<int> using8(2, 0);
-	vector<int> using9(2, 0);
+	int using1 = 0;
+	int using2 = 0;
+	int using3 = 0;
+	int sum = 0;
 
 	// 테스트 케이스의 수만큼 반복
 	for (size_t i = 0; i < T; i++)
@@ -35,6 +30,27 @@ int main()
 		// 정수 n 입력
 		cin >> n;
 
-		
+		if (n == 1)
+		{
+			cout << 1 << '\n';
+		}
+		else if (n == 2)
+		{
+			cout << 2 << '\n';
+		}
+
+		// n을 구하는 방법이 더 없을 때까지 반복
+		while (true)
+		{
+		// 1을 먼저 사용한 경우
+			// 1을 제외한 2, 3 사용
+			
+		// 2를 먼저 사용한 경우
+			// 2를 제외한 1, 3 사용
+			
+		// 3을 먼저 사용한 경우
+			// 3을 제외한 1, 2 사용
+						
+		}
 	}
 }
