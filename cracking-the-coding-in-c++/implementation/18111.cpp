@@ -1,6 +1,6 @@
 // 백준 온라인 저지 18111번 https://www.acmicpc.net/problem/18111
 // 제한 시간 : 1초 (추가 시간 없음)
-// 실행 시간 : ms
+// 실행 시간 : 516ms
 
 #include <iostream>
 #include <vector>
@@ -77,7 +77,7 @@ int main()
 			tempX = cannotBuiltPosition[i].second;
 			
 			// 현재 인벤토리에 있는 블록의 개수가 쌓아야 하는 블록의 개수보다 많으면,
-			if (0 < nowB && nowB >= ground[tempY][tempX])
+			if (0 < nowB && (hToMake - ground[tempY][tempX]) <= nowB)
 			{
 				// 한 블럭당 쌓는 시간 1초 추가
 				timeLoadedOrDeletedBlock[hToMake] += (hToMake - ground[tempY][tempX]) * 1;
