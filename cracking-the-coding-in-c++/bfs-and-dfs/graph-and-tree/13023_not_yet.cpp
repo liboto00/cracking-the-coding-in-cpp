@@ -6,35 +6,34 @@
 #include <vector>
 using namespace std;
 
-int cntConnectedNodes = 0;
-bool isABCDE = false;
-
-void dfs(vector<vector<int>>& list, vector<int>& visited, int start)
+void dfs(vector<vector<int>>& list, vector<int>& visited, int start, int* _cntConnectedNodes, bool* _isABCDE)
 {
 	int connectedNode;
+	visited[start] = 1;
 
 	for (size_t i = 0; i < list[start].size(); i++)
 	{
 		connectedNode = list[start][i];
 
+		if (*_cntConnectedNodes >= 4)
+		{
+			*_isABCDE = true;
+
+			return;
+		}
+
 		if (visited[connectedNode] == 0)
 		{
-			if (cntConnectedNodes >= 3)
-			{
-				isABCDE = true;
-
-				return;
-			}
 			visited[connectedNode] = 1;
 			// 연속적인 관계의 수 카운팅
-			cntConnectedNodes++;
-			dfs(list, visited, connectedNode);
+			(*_cntConnectedNodes)++;
+			dfs(list, visited, connectedNode, _cntConnectedNodes, _isABCDE);
 		}
 	}
 
 	// start에서 다시 경로를 탐색하므로 방문했던 노드들은 다시 초기화
 	visited[start] = 0;
-	cntConnectedNodes--;
+	(*_cntConnectedNodes)--;
 }
 
 int main()
@@ -47,8 +46,8 @@ int main()
 	int N, M, u, v;
 	cin >> N >> M;
 
-	vector<vector<int>> list(N + 1, vector <int>());
-	vector<int> visited(N + 1, 0);
+	vector<vector<int>> list(N, vector <int>());
+	vector<int> visited(N, 0);
 
 	// 친구의 관계 수 M만큼 반복
 	for (int i = 0; i < M; i++)
@@ -58,12 +57,13 @@ int main()
 		list[v].push_back(u);
 	}
 
-	// 관계가 연속적으로 4번 이상 이어지면, 1 출력 아니면, 0 출력
+	int cntConnectedNodes = 0;
+	bool isABCDE = false;
+
+	// 연속적인 관계의 수가 4번 이상 이어지면, 1 출력 아니면, 0 출력
 	for (int i = 0; i < N; i++)
 	{
-		// 시작 노드는 방문처리
-		visited[i] = 1;
-		dfs(list, visited, i);
+		dfs(list, visited, i, &cntConnectedNodes, &isABCDE);
 
 		if (isABCDE)
 		{
