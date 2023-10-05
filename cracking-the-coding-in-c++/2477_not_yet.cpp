@@ -111,8 +111,8 @@ int main()
 						{
 							field[nowY][tempX] = 1;
 
-// Error 발생
-							nowX = tempX;
+							// Error 발생
+							// nowX = tempX;
 						}
 					}
 				}
@@ -124,7 +124,8 @@ int main()
 					{
 						field[nowY][tempX] = 1;
 
-						nowX = tempX;
+						// Error 발생
+						// nowX = tempX;
 					}
 				}
 			}
