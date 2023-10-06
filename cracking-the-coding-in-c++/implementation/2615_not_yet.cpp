@@ -16,6 +16,10 @@ int main()
 	cout.tie(NULL);
 
 	int board[20][20] = { 0, };
+	int visited_vertical[20][20] = { 0, };
+	int visited_horizontal[20][20] = { 0, };
+	int visited_slash[20][20] = { 0, };
+	int visited_back_slash[20][20] = { 0, };
 	for (size_t y = 1; y <= 19; y++)
 	{
 		for (size_t x = 1; x <= 19; x++)
@@ -40,16 +44,28 @@ int main()
 	{
 		for (int x = 1; x <= 18; x++)
 		{
-			// 흑돌을 만나면,
-			if (board[y][x] == 1)
+			// 적어도 하나의 줄에 방문하지 않았고, 흑돌이면,
+			if ((visited_vertical[y][x] == 0 
+				|| visited_horizontal[y][x]== 0 
+				|| visited_slash[y][x] == 0
+				|| visited_back_slash[y][x] == 0)	&& board[y][x] == 1)
 			{
 				cntBlack = 1;
+				visited_vertical[y][x] = 1;
+				visited_horizontal[y][x] = 1;
+				visited_slash[y][x] = 1;
+				visited_back_slash[y][x] = 1;
 
 				// 가로줄에 있는 흑돌의 개수 판단
 				for (int nowX = x + 1; nowX <= 19; nowX++)
 				{
-					if (board[y][nowX] == 1)
+					// 아직 방문하지 않았고, 흑돌이면,
+					if (visited_horizontal[y][nowX] == 0 && board[y][nowX] == 1)
 					{
+						// 방문 처리
+						visited_horizontal[y][nowX] = 1;
+
+						// 흑돌 개수 카운트
 						cntBlack++;
 					}
 					else
@@ -72,8 +88,13 @@ int main()
 				// 세로줄에 있는 흑돌의 개수 판단
 				for (int nowY = y + 1; nowY <= 19; nowY++)
 				{
-					if (board[nowY][x] == 1)
+					// 아직 방문하지 않았고, 흑돌이면,
+					if (visited_vertical[nowY][x] == 0 && board[nowY][x] == 1)
 					{
+						// 방문 처리
+						visited_vertical[nowY][x] = 1;
+
+						// 흑돌 개수 카운트
 						cntBlack++;
 					}
 					else
@@ -91,11 +112,16 @@ int main()
 				}
 				cntBlack = 1;
 
-				// 대각선줄에 있는 흑돌의 개수 판단
+				// 슬래쉬 방향 대각선줄에 있는 흑돌의 개수 판단
 				for (int i = 1; (y + i <= 19) && (x + i <= 19); i++)
 				{
-					if (board[y + i][x + i] == 1)
+					// 아직 방문하지 않았고, 흑돌이면,
+					if (visited_slash[y + i][x + i] == 0 && board[y + i][x + i] == 1)
 					{
+						// 방문 처리
+						visited_slash[y + i][x + i] = 1;
+
+						// 흑돌 개수 카운트
 						cntBlack++;
 					}
 					else
@@ -112,17 +138,57 @@ int main()
 					positionOfBlack.second = x;
 				}
 				cntBlack = 1;
+
+				// 역 슬래쉬 방향 대각선줄에 있는 흑돌의 개수 판단
+				int i;
+				for (i = 1; (y + i <= 19) && (x - i >= 0); i++)
+				{
+					// 아직 방문하지 않았고, 흑돌이면,
+					if (visited_back_slash[y + i][x - i] == 0 && board[y + i][x - i] == 1)
+					{
+						// 방문 처리
+						visited_back_slash[y + i][x - i] = 1;
+
+						// 흑돌 개수 카운트
+						cntBlack++;
+					}
+					else
+					{
+						break;
+					}
+				}
+				if (maxNumOfBlack < cntBlack && cntBlack < 6)
+				{
+					maxNumOfBlack = cntBlack;
+
+					// 맨 왼쪽 위에 있는 흑돌의 위치
+					positionOfBlack.first = y + (i - 1);
+					positionOfBlack.second = x - (i - 1);
+				}
+				cntBlack = 1;
 			} 
-			// 백돌을 만나면,
-			else if (board[y][x] == 2)
+			// 적어도 하나의 줄에 방문하지 않았고, 백돌이면,
+			else if ((visited_vertical[y][x] == 0
+				|| visited_horizontal[y][x] == 0
+				|| visited_slash[y][x] == 0
+				|| visited_back_slash[y][x] == 0) && board[y][x] == 2)
 			{
 				cntWhite = 1;
+				visited_vertical[y][x] = 1;
+				visited_horizontal[y][x] = 1;
+				visited_slash[y][x] = 1;
+				visited_back_slash[y][x] = 1;
 
 				// 가로줄에 있는 백돌의 개수 판단
 				for (int nowX = x + 1; nowX <= 19; nowX++)
 				{
-					if (board[y][nowX] == 2)
+					// 아직 방문하지 않았고, 백돌이면,
+					if (visited_horizontal[y][nowX] == 0 && board[y][nowX] == 2)
 					{
+						// 방문 처리
+						visited_horizontal[y][nowX] = 1;
+
+						// 백돌 개수 카운트
 						cntWhite++;
 					}
 					else
@@ -145,8 +211,13 @@ int main()
 				// 세로줄에 있는 백돌의 개수 판단
 				for (int nowY = y + 1; nowY <= 19; nowY++)
 				{
-					if (board[nowY][x] == 2)
+					// 아직 방문하지 않았고, 백돌이면,
+					if (visited_vertical[nowY][x] == 0 && board[nowY][x] == 2)
 					{
+						// 방문 처리
+						visited_vertical[nowY][x] = 1;
+
+						// 백돌 개수 카운트
 						cntWhite++;
 					}
 					else
@@ -164,11 +235,16 @@ int main()
 				}
 				cntWhite = 1;
 
-				// 대각선줄에 있는 백돌의 개수 판단
+				// 슬래쉬 방향 대각선줄에 있는 백돌의 개수 판단
 				for (int i = 1; (y + i <= 19) && (x + i <= 19); i++)
 				{
-					if (board[y + i][x + i] == 2)
+					// 아직 방문하지 않았고, 백돌이면,
+					if (visited_slash[y + i][x + i] == 0 && board[y + i][x + i] == 2)
 					{
+						// 방문 처리
+						visited_slash[y + i][x + i] = 1;
+
+						// 백돌 개수 카운트
 						cntWhite++;
 					}
 					else
@@ -183,6 +259,34 @@ int main()
 					// 맨 왼쪽 위에 있는 백돌의 위치
 					positionOfWhite.first = y;
 					positionOfWhite.second = x;
+				}
+				cntWhite = 1;
+
+				int i;
+				// 역 슬래쉬 방향 대각선줄에 있는 백돌의 개수 판단
+				for (i = 1; (y + i <= 19) && (x - i >= 0); i++)
+				{
+					// 아직 방문하지 않았고, 백돌이면,
+					if (visited_back_slash[y + i][x - i] == 0 && board[y + i][x - i] == 2)
+					{
+						// 방문 처리
+						visited_back_slash[y + i][x - i] = 1;
+
+						// 백돌 개수 카운트
+						cntWhite++;
+					}
+					else
+					{
+						break;
+					}
+				}
+				if (maxNumOfWhite < cntWhite && cntWhite < 6)
+				{
+					maxNumOfWhite = cntWhite;
+
+					// 맨 왼쪽 위에 있는 백돌의 위치
+					positionOfWhite.first = y + (i - 1);
+					positionOfWhite.second = x - (i - 1);
 				}
 				cntWhite = 1;
 			}
