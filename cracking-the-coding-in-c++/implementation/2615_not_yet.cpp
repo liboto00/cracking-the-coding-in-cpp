@@ -20,7 +20,7 @@ int main()
 	{
 		for (size_t x = 1; x <= 19; x++)
 		{
-			cin >> board[y][x];
+			cin >> board[y][x]; 
 		}
 	}
 
@@ -112,7 +112,7 @@ int main()
 					positionOfBlack.second = x;
 				}
 				cntBlack = 1;
-			}
+			} 
 			// 백돌을 만나면,
 			else if (board[y][x] == 2)
 			{
