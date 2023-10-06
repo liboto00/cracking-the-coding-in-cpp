@@ -23,6 +23,7 @@ int main()
 	int direction;
 	int length;
 	int y = 500, x = 500;
+	int cnt = 1;
 	for (size_t i = 1; i <= 6; i++)
 	{
 		cin >> direction >> length;
@@ -36,6 +37,12 @@ int main()
 				field[y][x] = 1;
 				x++;
 			}
+
+			if (cnt != 5 && cnt != 6)
+			{
+				x--;
+			}
+			cnt++;
 			break;
 		case 2:
 			for (size_t j = 1; j <= length; j++)
@@ -43,6 +50,12 @@ int main()
 				field[y][x] = 1;
 				x--;
 			}
+
+			if (cnt != 5 && cnt != 6)
+			{
+				x++;
+			}
+			cnt++;
 			break;
 		case 3:
 			for (size_t j = 1; j <= length; j++)
@@ -50,6 +63,12 @@ int main()
 				field[y][x] = 1;
 				y++;
 			}
+
+			if (cnt != 5 && cnt != 6)
+			{
+				y--;
+			}
+			cnt++;
 			break;
 		case 4:
 			for (size_t j = 1; j <= length; j++)
@@ -57,6 +76,12 @@ int main()
 				field[y][x] = 1;
 				y--;
 			}
+			
+			if (cnt != 5 && cnt != 6)
+			{
+				y++;
+			}
+			cnt++;
 			break;
 		default:
 			break;
