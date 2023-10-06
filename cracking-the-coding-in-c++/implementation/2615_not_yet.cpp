@@ -2,6 +2,8 @@
 // 제한 시간 : 1초
 // 실행 시간 : ms
 
+// 반례 : https://www.acmicpc.net/board/view/83649
+
 #include <iostream>
 #include <vector>
 #include <tuple>
