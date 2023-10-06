@@ -305,6 +305,6 @@ int main()
 	}
 	else
 	{
-		cout << 0 << '\n';
+		cout << 0;
 	}
 }
