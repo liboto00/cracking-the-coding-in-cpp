@@ -253,6 +253,6 @@ int main()
 		break;
 	}
 	
-	// Multiply the size of a field of oriental melon and The number of oriental melons
+	// Multiply the size of a field of oriental melon and the number of oriental melons
 	cout << sizeOfField * K;
 }
