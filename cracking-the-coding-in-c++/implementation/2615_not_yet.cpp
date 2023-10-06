@@ -112,7 +112,7 @@ int main()
 					positionOfBlack.second = x;
 				}
 				cntBlack = 1;
-			}
+			} 
 			// 백돌을 만나면,
 			else if (board[y][x] == 2)
 			{
