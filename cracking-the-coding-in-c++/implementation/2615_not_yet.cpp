@@ -20,7 +20,7 @@ int main()
 	{
 		for (size_t x = 1; x <= 19; x++)
 		{
-			cin >> board[y][x];
+			cin >> board[y][x]; 
 		}
 	}
 
