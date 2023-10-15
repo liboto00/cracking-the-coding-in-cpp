@@ -29,15 +29,19 @@ void Recursive(int level, vector<vector<int>> _colorOfStreet)
 		{
 			if (y == 0 && visited[y][x] == 0)
 			{
+				visited[y][x] = 1;
 				path[level] = _colorOfStreet[y][x];
 				Recursive(level + 1, _colorOfStreet);
+				visited[y][x] = 0;
 				path[level] = 0;
 				break;
 			}
-			else if (y > 0 && visited[y - 1][x] == 0)
+			else if (y > 0 && visited[y - 1][x] == 0 && visited[y][x] == 0)
 			{
+				visited[y][x] = 1;
 				path[level] = _colorOfStreet[y][x];
 				Recursive(level + 1, _colorOfStreet);
+				visited[y][x] = 0;
 				path[level] = 0;
 				break;
 			}
@@ -66,4 +70,6 @@ int main()
 	// 인접한 집과 같은 색이면 안 된다는 조건을 적용해 Brute force
 	// e.g. 첫 번째 행의 첫 번째 열의 색을 선택한 경우, 두 번째 행은 첫 번째 열을 선택하지 못한다.
 	Recursive(0, colorOfStreet);
+
+	cout << minNum;
 }
