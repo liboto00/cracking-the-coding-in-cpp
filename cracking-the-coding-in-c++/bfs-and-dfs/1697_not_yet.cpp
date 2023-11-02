@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 int main()
@@ -23,37 +24,44 @@ int main()
 		return 0;
 	}
 
-	// 수빈이의 위치가 X일 때, 1초 후, 이동 위치
-	// 1. X - 1
-	// 2. X + 1
-	// 3. 2 * X 이동
-	vector<int> position(2 * K, 0);
-	int nowN = N;
-	int direction[4] = {nowN - 1, nowN + 1, 2 * nowN};
-	int cntStep = 0;
+	vector<int> visited(200001, 0);
+	visited[N] = 1;
+	typedef pair<int, int> p;
+	queue<p> q;
+	q.push(make_pair(N, 0));
 
-	while (!position[K])
+	while (!q.empty())
 	{
-		cntStep++;
+		q.back().second++;
 
+		int nowN = q.front().first;
+
+		int moving[3] = { nowN - 1, nowN + 1, 2 * nowN };
 		for (size_t i = 0; i < 3; i++)
 		{
-			nowN = direction[i];
+			if (moving[i] < 0 || 200000 < moving[i])
+				continue;
 
-			if ((0 <= nowN && nowN <= 100000)
-				&& position[nowN] == 0)
+			if (visited[moving[i]] == 0)
 			{
-				position[nowN] = cntStep;
+				visited[q.back().first] = 1;
+				q.push(make_pair(moving[i], ++q.back().second));
 
-				if (nowN == K)
+				if (q.back().first == K)
 				{
-					cout << position[K];
-					
+					cout << q.back().second / 3;
+
+					if (q.back().second % 3 == 0)
+						cout << q.back().second / 3;
+					else
+						cout << (q.back().second / 3) + 1;
+
 					return 0;
 				}
 			}
 		}
+		q.pop();
 	}
 
-	cout << position[K];
+	return 0;
 }
