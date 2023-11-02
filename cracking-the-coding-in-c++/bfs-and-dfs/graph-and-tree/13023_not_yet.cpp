@@ -6,34 +6,32 @@
 #include <vector>
 using namespace std;
 
-void dfs(vector<vector<int>>& list, vector<int>& visited, int start, int* _cntConnectedNodes, bool* _isABCDE)
+int N, M;
+vector<int> visited(N, 0);
+void FindABCDE(int nowNode)
 {
-	int connectedNode;
-	visited[start] = 1;
-
-	for (size_t i = 0; i < list[start].size(); i++)
+	// 겹치는 노드없이 한 번에 쭉 노드를 탐색했을 때,
+	if ()
 	{
-		connectedNode = list[start][i];
-
-		if (*_cntConnectedNodes >= 4)
+		// 간선이 4개 이상이면,
+		if (cnt >= 4)
 		{
-			*_isABCDE = true;
-
-			return;
+			cout << 0;
+		}
+		else
+		{
+			cout << 0;
 		}
 
-		if (visited[connectedNode] == 0)
-		{
-			visited[connectedNode] = 1;
-			// 연속적인 관계의 수 카운팅
-			(*_cntConnectedNodes)++;
-			dfs(list, visited, connectedNode, _cntConnectedNodes, _isABCDE);
-		}
+		return;
 	}
 
-	// start에서 다시 경로를 탐색하므로 방문했던 노드들은 다시 초기화
-	visited[start] = 0;
-	(*_cntConnectedNodes)--;
+	for (size_t i = 0; i < N; i++)
+	{
+
+		FindABCDE(i);
+
+	}
 }
 
 int main()
@@ -42,35 +40,23 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	// 첫째 줄에 사람의 수 N (5 ≤ N ≤ 2000)과 친구 관계의 수 M (1 ≤ M ≤ 2000)
-	int N, M, u, v;
+	// 사람의 수 N (5 ≤ N ≤ 2000)과 친구 관계의 수 M (1 ≤ M ≤ 2000)
 	cin >> N >> M;
 
-	vector<vector<int>> list(N, vector <int>());
-	vector<int> visited(N, 0);
-
-	// 친구의 관계 수 M만큼 반복
-	for (int i = 0; i < M; i++)
+	// 사람 간의 관계 존재 여부 설정
+	vector<vector<int>> relation(N, vector<int>(N, 0));
+	for (size_t i = 0; i < M; i++)
 	{
+		int u, v;
 		cin >> u >> v;
-		list[u].push_back(v);
-		list[v].push_back(u);
+
+		relation[u][v] = 1;
+		relation[v][u] = 1;
 	}
 
-	int cntConnectedNodes = 0;
-	bool isABCDE = false;
-
-	// 연속적인 관계의 수가 4번 이상 이어지면, 1 출력 아니면, 0 출력
-	for (int i = 0; i < N; i++)
+	for (size_t startNode = 0; startNode < N; startNode++)
 	{
-		dfs(list, visited, i, &cntConnectedNodes, &isABCDE);
-
-		if (isABCDE)
-		{
-			cout << 1;
-
-			return 0;
-		}
+		FindABCDE(startNode);
 	}
 
 	cout << 0;
