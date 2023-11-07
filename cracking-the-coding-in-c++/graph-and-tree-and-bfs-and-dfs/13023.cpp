@@ -68,6 +68,8 @@ int main()
 
 			return 0;
 		}
+
+		visited[startNode] = 0;
 	}
 
 	cout << 0;
