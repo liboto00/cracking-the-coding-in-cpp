@@ -7,31 +7,34 @@
 using namespace std;
 
 int N, M;
-vector<int> visited(N, 0);
-void FindABCDE(int nowNode)
+int cnt = 0;
+int FindABCDE(vector<vector<int>>& relation, vector<int>& visited, int nowNode)
 {
-	// 겹치는 노드없이 한 번에 쭉 노드를 탐색했을 때,
-	if ()
+	// 겹치는 노드없이 한 번에 노드를 탐색했을 때,
+	// 간선이 4개 이상이면,
+	if (cnt >= 4)
 	{
-		// 간선이 4개 이상이면,
-		if (cnt >= 4)
-		{
-			cout << 0;
-		}
-		else
-		{
-			cout << 0;
-		}
-
-		return;
+		return 1;
 	}
 
-	for (size_t i = 0; i < N; i++)
+	for (size_t i = 0; i < relation[nowNode].size(); i++)
 	{
+		int connectedNode = relation[nowNode][i];
 
-		FindABCDE(i);
+		if (visited[connectedNode] == 1)
+			continue;
 
+		visited[connectedNode] = 1;
+		cnt++;
+		if (FindABCDE(relation, visited, connectedNode))
+		{
+			return 1;
+		}
+		cnt--;
+		visited[connectedNode] = 0;
 	}
+
+	return 0;
 }
 
 int main()
@@ -44,20 +47,30 @@ int main()
 	cin >> N >> M;
 
 	// 사람 간의 관계 존재 여부 설정
-	vector<vector<int>> relation(N, vector<int>(N, 0));
+	vector<vector<int>> relation(N);
+	vector<int> visited(N, 0);
 	for (size_t i = 0; i < M; i++)
 	{
 		int u, v;
 		cin >> u >> v;
 
-		relation[u][v] = 1;
-		relation[v][u] = 1;
+		relation[u].push_back(v);
+		relation[v].push_back(u);
 	}
 
-	for (size_t startNode = 0; startNode < N; startNode++)
+	for (int startNode = 0; startNode < N; startNode++)
 	{
-		FindABCDE(startNode);
+		visited[startNode] = 1;
+
+		if (FindABCDE(relation, visited, startNode))
+		{
+			cout << 1;
+
+			return 0;
+		}
 	}
 
 	cout << 0;
+
+	return 0;
 }
