@@ -1,3 +1,7 @@
+// 백준 온라인 저지 16926번 https://www.acmicpc.net/problem/16926
+// 제한 시간 : 1초
+// 실행 시간 : 276ms
+
 #include <iostream>
 #include <vector>
 using namespace std;

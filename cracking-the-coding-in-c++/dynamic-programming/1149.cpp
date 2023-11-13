@@ -1,6 +1,6 @@
 // 백준 온라인 저지 1149번 https://www.acmicpc.net/problem/1149
 // 제한 시간 : 0.5초 (추가 시간 없음)
-// 실행 시간 : ms
+// 실행 시간 : 0ms
 
 #include<iostream>
 #include<vector>
