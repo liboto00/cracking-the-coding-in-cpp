@@ -2,12 +2,789 @@
 // 제한 시간 : 1초
 // 실행 시간 : ms
 
-// 반례 : https://www.acmicpc.net/board/view/83649
-
 #include <iostream>
 #include <vector>
 #include <tuple>
 using namespace std;
+
+void FindOmok(vector<vector<int>>& board)
+{
+	typedef pair<int, int> p;
+
+	// 이전 바둑돌
+	int prev_baduk_stone = 0;
+	// 흑돌 카운트 = {바둑돌 색 판단, 연속된 흑돌 카운트}
+	p cnt_baduk_stone_1 = { 1, 1 };
+	// 백돌 카운트 = {바둑돌 색 판단, 연속된 백돌 카운트}
+	p cnt_baduk_stone_2 = { 2, 1 };
+
+	// 가로 오목 유무 판단
+	for (size_t y = 1; y < 20; y++)
+	{
+		for (size_t x = 1; x < 20; x++)
+		{
+			// 현재 탐색한 돌이 흑돌이고,
+			if (board[y][x] == 1)
+			{
+				// 이전 탐색한 돌도 흑돌이라면,
+				if (prev_baduk_stone == 1)
+				{
+					cnt_baduk_stone_1.second++;
+				}
+				// 이전 탐색한 돌이 백돌이라면,
+				else if (prev_baduk_stone == 2)
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+					cnt_baduk_stone_2.second = 0;
+				}
+
+				prev_baduk_stone = 1;
+			}
+			// 현재 탐색한 돌이 백돌이고,
+			else if (board[y][x] == 2)
+			{
+				// 이전 탐색한 돌도 백돌이라면,
+				if (prev_baduk_stone == 2)
+				{
+					cnt_baduk_stone_2.second++;
+				}
+				// 이전 탐색한 돌이 흑돌이라면,
+				else if (prev_baduk_stone == 1)
+				{
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					cnt_baduk_stone_1.second = 0;
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+
+				prev_baduk_stone = 2;
+
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[y][x] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y << ' ' << x - 5;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[y][x] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y << ' ' << x - 5;
+
+					return;
+				}
+			}
+			// 현재 탐색한 돌이 없다면,
+			else
+			{
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[y][x] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y << ' ' << x - 5;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[y][x] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y << ' ' << x - 5;
+
+					return;
+				}
+
+				cnt_baduk_stone_1.second = 0;
+				cnt_baduk_stone_2.second = 0;
+
+				prev_baduk_stone = 0;
+			}
+
+			// 현재 탐색한 돌이 가로의 끝에 있다면,
+			if (x == 19)
+			{
+				// 5개가 연속된 바둑돌이 있고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y << ' ' << x - 4;
+
+					return;
+				}
+				// 5개가 연속된 바둑돌이 있고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y << ' ' << x - 4;
+
+					return;
+				}
+			}
+		}
+
+		cnt_baduk_stone_1.second = 0;
+		cnt_baduk_stone_2.second = 0;
+	}
+
+	// 세로 오목 유무 판단
+	prev_baduk_stone = 0;
+	for (size_t x = 1; x < 20; x++)
+	{
+		for (size_t y = 1; y < 20; y++)
+		{
+			// 현재 탐색한 돌이 흑돌이고,
+			if (board[y][x] == 1)
+			{
+				// 이전 탐색한 돌도 흑돌이라면,
+				if (prev_baduk_stone == 1)
+				{
+					cnt_baduk_stone_1.second++;
+				}
+				// 이전 탐색한 돌이 백돌이라면,
+				else if (prev_baduk_stone == 2)
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+					cnt_baduk_stone_2.second = 0;
+				}
+
+				prev_baduk_stone = 1;
+			}
+			// 현재 탐색한 돌이 백돌이고,
+			else if (board[y][x] == 2)
+			{
+				// 이전 탐색한 돌도 백돌이라면,
+				if (prev_baduk_stone == 2)
+				{
+					cnt_baduk_stone_2.second++;
+				}
+				// 이전 탐색한 돌이 흑돌이라면,
+				else if (prev_baduk_stone == 1)
+				{
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					cnt_baduk_stone_1.second = 0;
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+
+				prev_baduk_stone = 2;
+
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[y][x] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y - 5 << ' ' << x;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[y][x] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y - 5 << ' ' << x;
+
+					return;
+				}
+			}
+			// 현재 탐색한 돌이 없다면,
+			else
+			{
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[y][x] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y - 5 << ' ' << x;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[y][x] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y - 5 << ' ' << x;
+
+					return;
+				}
+
+				cnt_baduk_stone_1.second = 0;
+				cnt_baduk_stone_2.second = 0;
+
+				prev_baduk_stone = 0;
+			}
+
+			// 현재 탐색한 돌이 세로의 끝에 있다면,
+			if (y == 19)
+			{
+				// 5개가 연속된 바둑돌이 있고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y - 4 << ' ' << x;
+
+					return;
+				}
+				// 5개가 연속된 바둑돌이 있고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y - 4 << ' ' << x;
+
+					return;
+				}
+			}
+		}
+
+		cnt_baduk_stone_1.second = 0;
+		cnt_baduk_stone_2.second = 0;
+	}
+
+	// 대각선 위 오목 유무 판단
+	prev_baduk_stone = 0;
+	for (size_t x = 1; x < 20; x++)
+	{
+		size_t nowX = x;
+		size_t y = 1;
+
+		// 바둑돌이 바둑판 범위 안에 존재하면,
+		while ((1 <= y && y <= 19) && (1 <= nowX && nowX <= 19))
+		{
+			// 현재 탐색한 돌이 흑돌이고,
+			if (board[y][nowX] == 1)
+			{
+				// 이전 탐색한 돌도 흑돌이라면,
+				if (prev_baduk_stone == 1)
+				{
+					cnt_baduk_stone_1.second++;
+				}
+				// 이전 탐색한 돌이 백돌이라면,
+				else if (prev_baduk_stone == 2)
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+					cnt_baduk_stone_2.second = 0;
+				}
+
+				prev_baduk_stone = 1;
+			}
+			// 현재 탐색한 돌이 백돌이고,
+			else if (board[y][nowX] == 2)
+			{
+				// 이전 탐색한 돌도 백돌이라면,
+				if (prev_baduk_stone == 2)
+				{
+					cnt_baduk_stone_2.second++;
+				}
+				// 이전 탐색한 돌이 흑돌이라면,
+				else if (prev_baduk_stone == 1)
+				{
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					cnt_baduk_stone_1.second = 0;
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+
+				prev_baduk_stone = 2;
+
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[y][nowX] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y - 1 << ' ' << nowX + 1;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[y][nowX] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y - 1 << ' ' << nowX + 1;
+
+					return;
+				}
+			}
+			// 현재 탐색한 돌이 없다면,
+			else
+			{
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[y][nowX] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y - 1 << ' ' << nowX + 1;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[y][nowX] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y - 1 << ' ' << nowX + 1;
+
+					return;
+				}
+
+				cnt_baduk_stone_1.second = 0;
+				cnt_baduk_stone_2.second = 0;
+
+				prev_baduk_stone = 0;
+			}
+
+			// 현재 탐색한 돌이 대각선의 끝에 있다면,
+			if (nowX == 1)
+			{
+				// 5개가 연속된 바둑돌이 있고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y << ' ' << nowX;
+
+					return;
+				}
+				// 5개가 연속된 바둑돌이 있고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y << ' ' << nowX;
+
+					return;
+				}
+			}
+
+			// 대각선으로 이동
+			y++;
+			nowX--;
+		}
+		cnt_baduk_stone_1.second = 0;
+		cnt_baduk_stone_2.second = 0;
+	}
+
+	// 대각선 아래 오목 유무 판단
+	prev_baduk_stone = 0;
+	for (size_t y = 1; y < 16; y++)
+	{
+		size_t x = 19;
+		size_t nowY = y;
+
+		// 바둑돌이 바둑판 범위 안에 존재하면,
+		while ((1 <= nowY && nowY <= 19) && (1 <= x && x <= 19))
+		{
+			// 현재 탐색한 돌이 흑돌이고,
+			if (board[nowY][x] == 1)
+			{
+				// 이전 탐색한 돌도 흑돌이라면,
+				if (prev_baduk_stone == 1)
+				{
+					cnt_baduk_stone_1.second++;
+				}
+				// 이전 탐색한 돌이 백돌이라면,
+				else if (prev_baduk_stone == 2)
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+					cnt_baduk_stone_2.second = 0;
+				}
+
+				prev_baduk_stone = 1;
+			}
+			// 현재 탐색한 돌이 백돌이고,
+			else if (board[nowY][x] == 2)
+			{
+				// 이전 탐색한 돌도 백돌이라면,
+				if (prev_baduk_stone == 2)
+				{
+					cnt_baduk_stone_2.second++;
+				}
+				// 이전 탐색한 돌이 흑돌이라면,
+				else if (prev_baduk_stone == 1)
+				{
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					cnt_baduk_stone_1.second = 0;
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+
+				prev_baduk_stone = 2;
+
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[nowY][x] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << nowY - 1 << ' ' << x + 1;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[nowY][x] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << nowY - 1 << ' ' << x + 1;
+
+					return;
+				}
+			}
+			// 현재 탐색한 돌이 없다면,
+			else
+			{
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[nowY][x] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << nowY - 1 << ' ' << x + 1;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[nowY][x] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << nowY - 1 << ' ' << x + 1;
+
+					return;
+				}
+
+				cnt_baduk_stone_1.second = 0;
+				cnt_baduk_stone_2.second = 0;
+
+				prev_baduk_stone = 0;
+			}
+
+			// 현재 탐색한 돌이 대각선의 끝에 있다면,
+			if (x == 1)
+			{
+				// 5개가 연속된 바둑돌이 있고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << nowY << ' ' << x;
+
+					return;
+				}
+				// 5개가 연속된 바둑돌이 있고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << nowY << ' ' << x;
+
+					return;
+				}
+			}
+
+			// 대각선으로 이동
+			nowY++;
+			x--;
+		}
+		cnt_baduk_stone_1.second = 0;
+		cnt_baduk_stone_2.second = 0;
+	}
+
+	// 역 대각선 위 오목 유무 판단
+	prev_baduk_stone = 0;
+	for (size_t x = 1; x < 16; x++)
+	{
+		size_t y = 1;
+		size_t nowX = x;
+
+		// 바둑돌이 바둑판 범위 안에 존재하면,
+		while ((1 <= y && y <= 19) && (1 <= nowX && nowX <= 19))
+		{
+			// 현재 탐색한 돌이 흑돌이고,
+			if (board[y][nowX] == 1)
+			{
+				// 이전 탐색한 돌도 흑돌이라면,
+				if (prev_baduk_stone == 1)
+				{
+					cnt_baduk_stone_1.second++;
+				}
+				// 이전 탐색한 돌이 백돌이라면,
+				else if (prev_baduk_stone == 2)
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+					cnt_baduk_stone_2.second = 0;
+				}
+
+				prev_baduk_stone = 1;
+			}
+			// 현재 탐색한 돌이 백돌이고,
+			else if (board[y][nowX] == 2)
+			{
+				// 이전 탐색한 돌도 백돌이라면,
+				if (prev_baduk_stone == 2)
+				{
+					cnt_baduk_stone_2.second++;
+				}
+				// 이전 탐색한 돌이 흑돌이라면,
+				else if (prev_baduk_stone == 1)
+				{
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					cnt_baduk_stone_1.second = 0;
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+
+				prev_baduk_stone = 2;
+
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[y][nowX] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y - 5 << ' ' << nowX - 5;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[y][nowX] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y - 5 << ' ' << nowX - 5;
+
+					return;
+				}
+			}
+			// 현재 탐색한 돌이 없다면,
+			else
+			{
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[y][nowX] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y - 5 << ' ' << nowX - 5;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[y][nowX] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y - 5 << ' ' << nowX - 5;
+
+					return;
+				}
+
+				cnt_baduk_stone_1.second = 0;
+				cnt_baduk_stone_2.second = 0;
+
+				prev_baduk_stone = 0;
+			}
+
+			// 현재 탐색한 돌이 역 대각선의 끝에 있다면,
+			if (nowX == 19)
+			{
+				// 5개가 연속된 바둑돌이 있고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << y - 4 << ' ' << nowX - 4;
+
+					return;
+				}
+				// 5개가 연속된 바둑돌이 있고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << y - 4 << ' ' << nowX - 4;
+
+					return;
+				}
+			}
+
+			// 대각선으로 이동
+			y++;
+			nowX++;
+		}
+		cnt_baduk_stone_1.second = 0;
+		cnt_baduk_stone_2.second = 0;
+	}
+
+	// 역 대각선 아래 오목 유무 판단
+	prev_baduk_stone = 0;
+	for (size_t y = 1; y < 16; y++)
+	{
+		size_t x = 1;
+		size_t nowY = y;
+
+		// 바둑돌이 바둑판 범위 안에 존재하면,
+		while ((1 <= nowY && nowY <= 19) && (1 <= x && x <= 19))
+		{
+			// 현재 탐색한 돌이 흑돌이고,
+			if (board[nowY][x] == 1)
+			{
+				// 이전 탐색한 돌도 흑돌이라면,
+				if (prev_baduk_stone == 1)
+				{
+					cnt_baduk_stone_1.second++;
+				}
+				// 이전 탐색한 돌이 백돌이라면,
+				else if (prev_baduk_stone == 2)
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					// 현재 흑돌이므로 1
+					cnt_baduk_stone_1.second = 1;
+					cnt_baduk_stone_2.second = 0;
+				}
+
+				prev_baduk_stone = 1;
+			}
+			// 현재 탐색한 돌이 백돌이고,
+			else if (board[nowY][x] == 2)
+			{
+				// 이전 탐색한 돌도 백돌이라면,
+				if (prev_baduk_stone == 2)
+				{
+					cnt_baduk_stone_2.second++;
+				}
+				// 이전 탐색한 돌이 흑돌이라면,
+				else if (prev_baduk_stone == 1)
+				{
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+				// 이전 탐색한 돌이 없다면,
+				else
+				{
+					cnt_baduk_stone_1.second = 0;
+					// 현재 백돌이므로 1
+					cnt_baduk_stone_2.second = 1;
+				}
+
+				prev_baduk_stone = 2;
+
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[nowY][x] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << nowY - 5 << ' ' << x - 5;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[nowY][x] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << nowY - 5 << ' ' << x - 5;
+
+					return;
+				}
+			}
+			// 현재 탐색한 돌이 없다면,
+			else
+			{
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5 && board[nowY][x] != 1)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << nowY - 5 << ' ' << x - 5;
+
+					return;
+				}
+				// 바로 앞에 탐색한 돌이 5개가 연속된 바둑돌이고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5 && board[nowY][x] != 2)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << nowY - 5 << ' ' << x - 5;
+
+					return;
+				}
+
+				cnt_baduk_stone_1.second = 0;
+				cnt_baduk_stone_2.second = 0;
+
+				prev_baduk_stone = 0;
+			}
+
+			// 현재 탐색한 돌이 역 대각선의 끝에 있다면,
+			if (x == 19)
+			{
+				// 5개가 연속된 바둑돌이 있고, 그것이 흑돌이라면,
+				if (cnt_baduk_stone_1.second == 5)
+				{
+					cout << cnt_baduk_stone_1.first << '\n';
+					cout << nowY - 4 << ' ' << x - 4;
+
+					return;
+				}
+				// 5개가 연속된 바둑돌이 있고, 그것이 백돌이라면,
+				else if (cnt_baduk_stone_2.second == 5)
+				{
+					cout << cnt_baduk_stone_2.first << '\n';
+					cout << nowY - 4 << ' ' << x - 4;
+
+					return;
+				}
+			}
+
+			// 대각선으로 이동
+			nowY++;
+			x++;
+		}
+		cnt_baduk_stone_1.second = 0;
+		cnt_baduk_stone_2.second = 0;
+	}
+
+	cout << 0;
+}
 
 int main()
 {
@@ -15,296 +792,15 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int board[20][20] = { 0, };
-	int visited_vertical[20][20] = { 0, };
-	int visited_horizontal[20][20] = { 0, };
-	int visited_slash[20][20] = { 0, };
-	int visited_back_slash[20][20] = { 0, };
-	for (size_t y = 1; y <= 19; y++)
+	vector<vector<int>> board(20, vector<int>(20, 0));
+	for (size_t y = 1; y < 20; y++)
 	{
-		for (size_t x = 1; x <= 19; x++)
+		for (size_t x = 1; x < 20; x++)
 		{
-			cin >> board[y][x]; 
+			cin >> board[y][x];
 		}
 	}
 
-	// 흑돌, 백돌 연속된 개수 판단
-	// 
-	// 가로줄 : 열만 1씩 커지는 경우
-	// 세로줄 : 행만 1씩 커지는 경우
-	// 대각선줄 : 행, 열이 동시에 1씩 커지는 경우
-
-	int cntBlack = 0;
-	int cntWhite = 0;
-	int maxNumOfBlack = 0;
-	int maxNumOfWhite = 0;
-	pair<int, int> positionOfBlack;
-	pair<int, int> positionOfWhite;
-	for (int y = 1; y <= 18; y++)
-	{
-		for (int x = 1; x <= 18; x++)
-		{
-			// 적어도 하나의 줄에 방문하지 않았고, 흑돌이면,
-			if ((visited_vertical[y][x] == 0 
-				|| visited_horizontal[y][x]== 0 
-				|| visited_slash[y][x] == 0
-				|| visited_back_slash[y][x] == 0)	&& board[y][x] == 1)
-			{
-				cntBlack = 1;
-				visited_vertical[y][x] = 1;
-				visited_horizontal[y][x] = 1;
-				visited_slash[y][x] = 1;
-				visited_back_slash[y][x] = 1;
-
-				// 가로줄에 있는 흑돌의 개수 판단
-				for (int nowX = x + 1; nowX <= 19; nowX++)
-				{
-					// 아직 방문하지 않았고, 흑돌이면,
-					if (visited_horizontal[y][nowX] == 0 && board[y][nowX] == 1)
-					{
-						// 방문 처리
-						visited_horizontal[y][nowX] = 1;
-
-						// 흑돌 개수 카운트
-						cntBlack++;
-					}
-					else
-					{
-						break;
-					}
-				}
-				// 현재 위치한 가로줄에 있는 흑돌의 개수가 연속된 흑돌들 중 최대값 보다 크고, 6 미만이라면,
-				if (maxNumOfBlack < cntBlack && cntBlack < 6)
-				{
-					// 현재 위치한 가로줄에 있는 흑돌의 개수가 최대값
-					maxNumOfBlack = cntBlack;
-
-					// 맨 왼쪽에 있는 흑돌의 위치
-					positionOfBlack.first = y;
-					positionOfBlack.second = x;
-				}
-				cntBlack = 1;
-
-				// 세로줄에 있는 흑돌의 개수 판단
-				for (int nowY = y + 1; nowY <= 19; nowY++)
-				{
-					// 아직 방문하지 않았고, 흑돌이면,
-					if (visited_vertical[nowY][x] == 0 && board[nowY][x] == 1)
-					{
-						// 방문 처리
-						visited_vertical[nowY][x] = 1;
-
-						// 흑돌 개수 카운트
-						cntBlack++;
-					}
-					else
-					{
-						break;
-					}
-				}
-				if (maxNumOfBlack < cntBlack && cntBlack < 6)
-				{
-					maxNumOfBlack = cntBlack;
-
-					// 맨 위쪽에 있는 흑돌의 위치
-					positionOfBlack.first = y;
-					positionOfBlack.second = x;
-				}
-				cntBlack = 1;
-
-				// 슬래쉬 방향 대각선줄에 있는 흑돌의 개수 판단
-				for (int i = 1; (y + i <= 19) && (x + i <= 19); i++)
-				{
-					// 아직 방문하지 않았고, 흑돌이면,
-					if (visited_slash[y + i][x + i] == 0 && board[y + i][x + i] == 1)
-					{
-						// 방문 처리
-						visited_slash[y + i][x + i] = 1;
-
-						// 흑돌 개수 카운트
-						cntBlack++;
-					}
-					else
-					{
-						break;
-					}
-				}
-				if (maxNumOfBlack < cntBlack && cntBlack < 6)
-				{
-					maxNumOfBlack = cntBlack;
-
-					// 맨 왼쪽 위에 있는 흑돌의 위치
-					positionOfBlack.first = y;
-					positionOfBlack.second = x;
-				}
-				cntBlack = 1;
-
-				// 역 슬래쉬 방향 대각선줄에 있는 흑돌의 개수 판단
-				int i;
-				for (i = 1; (y + i <= 19) && (x - i >= 0); i++)
-				{
-					// 아직 방문하지 않았고, 흑돌이면,
-					if (visited_back_slash[y + i][x - i] == 0 && board[y + i][x - i] == 1)
-					{
-						// 방문 처리
-						visited_back_slash[y + i][x - i] = 1;
-
-						// 흑돌 개수 카운트
-						cntBlack++;
-					}
-					else
-					{
-						break;
-					}
-				}
-				if (maxNumOfBlack < cntBlack && cntBlack < 6)
-				{
-					maxNumOfBlack = cntBlack;
-
-					// 맨 왼쪽 위에 있는 흑돌의 위치
-					positionOfBlack.first = y + (i - 1);
-					positionOfBlack.second = x - (i - 1);
-				}
-				cntBlack = 1;
-			} 
-			// 적어도 하나의 줄에 방문하지 않았고, 백돌이면,
-			else if ((visited_vertical[y][x] == 0
-				|| visited_horizontal[y][x] == 0
-				|| visited_slash[y][x] == 0
-				|| visited_back_slash[y][x] == 0) && board[y][x] == 2)
-			{
-				cntWhite = 1;
-				visited_vertical[y][x] = 1;
-				visited_horizontal[y][x] = 1;
-				visited_slash[y][x] = 1;
-				visited_back_slash[y][x] = 1;
-
-				// 가로줄에 있는 백돌의 개수 판단
-				for (int nowX = x + 1; nowX <= 19; nowX++)
-				{
-					// 아직 방문하지 않았고, 백돌이면,
-					if (visited_horizontal[y][nowX] == 0 && board[y][nowX] == 2)
-					{
-						// 방문 처리
-						visited_horizontal[y][nowX] = 1;
-
-						// 백돌 개수 카운트
-						cntWhite++;
-					}
-					else
-					{
-						break;
-					}
-				}
-				// 현재 위치한 가로줄에 있는 백돌의 개수가 연속된 백돌들 중 최대값 보다 크고, 6 미만이라면,
-				if (maxNumOfWhite < cntWhite && cntWhite < 6)
-				{
-					// 현재 위치한 가로줄에 있는 백돌의 개수가 최대값
-					maxNumOfWhite = cntWhite;
-
-					// 맨 왼쪽에 있는 백돌의 위치
-					positionOfWhite.first = y;
-					positionOfWhite.second = x;
-				}
-				cntWhite = 1;
-
-				// 세로줄에 있는 백돌의 개수 판단
-				for (int nowY = y + 1; nowY <= 19; nowY++)
-				{
-					// 아직 방문하지 않았고, 백돌이면,
-					if (visited_vertical[nowY][x] == 0 && board[nowY][x] == 2)
-					{
-						// 방문 처리
-						visited_vertical[nowY][x] = 1;
-
-						// 백돌 개수 카운트
-						cntWhite++;
-					}
-					else
-					{
-						break;
-					}
-				}
-				if (maxNumOfWhite < cntWhite && cntWhite < 6)
-				{
-					maxNumOfWhite = cntWhite;
-
-					// 맨 위쪽에 있는 백돌의 위치
-					positionOfWhite.first = y;
-					positionOfWhite.second = x;
-				}
-				cntWhite = 1;
-
-				// 슬래쉬 방향 대각선줄에 있는 백돌의 개수 판단
-				for (int i = 1; (y + i <= 19) && (x + i <= 19); i++)
-				{
-					// 아직 방문하지 않았고, 백돌이면,
-					if (visited_slash[y + i][x + i] == 0 && board[y + i][x + i] == 2)
-					{
-						// 방문 처리
-						visited_slash[y + i][x + i] = 1;
-
-						// 백돌 개수 카운트
-						cntWhite++;
-					}
-					else
-					{
-						break;
-					}
-				}
-				if (maxNumOfWhite < cntWhite && cntWhite < 6)
-				{
-					maxNumOfWhite = cntWhite;
-
-					// 맨 왼쪽 위에 있는 백돌의 위치
-					positionOfWhite.first = y;
-					positionOfWhite.second = x;
-				}
-				cntWhite = 1;
-
-				int i;
-				// 역 슬래쉬 방향 대각선줄에 있는 백돌의 개수 판단
-				for (i = 1; (y + i <= 19) && (x - i >= 0); i++)
-				{
-					// 아직 방문하지 않았고, 백돌이면,
-					if (visited_back_slash[y + i][x - i] == 0 && board[y + i][x - i] == 2)
-					{
-						// 방문 처리
-						visited_back_slash[y + i][x - i] = 1;
-
-						// 백돌 개수 카운트
-						cntWhite++;
-					}
-					else
-					{
-						break;
-					}
-				}
-				if (maxNumOfWhite < cntWhite && cntWhite < 6)
-				{
-					maxNumOfWhite = cntWhite;
-
-					// 맨 왼쪽 위에 있는 백돌의 위치
-					positionOfWhite.first = y + (i - 1);
-					positionOfWhite.second = x - (i - 1);
-				}
-				cntWhite = 1;
-			}
-		}
-	}
-
-	if (maxNumOfWhite < maxNumOfBlack)
-	{
-		cout << 1 << '\n';
-		cout << positionOfBlack.first << ' ' << positionOfBlack.second;
-	}
-	else if (maxNumOfWhite > maxNumOfBlack)
-	{
-		cout << 2 << '\n';
-		cout << positionOfWhite.first << ' ' << positionOfWhite.second;
-	}
-	else
-	{
-		cout << 0;
-	}
+	// 가로, 세로, /, \ 오목 유무 판단
+	FindOmok(board);
 }
