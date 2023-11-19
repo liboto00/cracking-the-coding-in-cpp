@@ -1,6 +1,6 @@
 // 백준 온라인 저지 1912번 https://www.acmicpc.net/problem/1912
 // 제한 시간 : 1초
-// 실행 시간 : ms
+// 실행 시간 : 8ms
 
 #include <iostream>
 #include <vector>

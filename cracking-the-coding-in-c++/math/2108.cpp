@@ -1,6 +1,6 @@
 // 백준 온라인 저지 2108번 https://www.acmicpc.net/problem/2108
 // 제한 시간 : 2초
-// 실행 시간 : ms
+// 실행 시간 : 196ms
 
 #include <iostream>
 #include <vector>
