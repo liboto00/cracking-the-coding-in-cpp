@@ -1,10 +1,12 @@
 # Cracking the Coding in C++
 
+### Recruitment & Blogs
+>  - [Recruitment & Blogs Lists](https://github.com/liboto00/cracking-the-coding-in-cpp/blob/master/recruitment-and-blogs.md.md)
+
 ### Tips
 >  - [Things I wish I knew before I studied C Language](https://modoocode.com/315)
 >  - [Optimizing C code](https://modoocode.com/129)
 >  - [Debugging](https://modoocode.com/31)
->  - [Tech blogs](https://github.com/liboto00/cracking-the-coding-in-cpp/blob/master/tech-blogs.md)
 
 ### Concepts
 >  - [Floating-point arithmetic](https://modoocode.com/attachment/%EB%AA%A8%EB%93%A0%20%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9E%90%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%B6%80%EB%8F%99%20%EC%86%8C%EC%88%98%EC%A0%90%EC%9D%98%20%EB%AA%A8%EB%93%A0%EA%B2%83.pdf)
