@@ -1,7 +1,7 @@
 # Cracking the Coding in C++
 
 ### Recruitment & Blogs
->  - [Recruitment & Blogs Lists](https://github.com/liboto00/cracking-the-coding-in-cpp/blob/master/recruitment-and-blogs.md.md)
+>  - [Recruitment & blogs lists](https://github.com/liboto00/cracking-the-coding-in-cpp/blob/master/recruitment-and-blogs.md)
 
 ### Tips
 >  - [Things I wish I knew before I studied C Language](https://modoocode.com/315)
