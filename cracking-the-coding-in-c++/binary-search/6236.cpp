@@ -19,13 +19,13 @@ int BinarySearch(vector<int>& atm, int M)
 	int cntWithdrawal = 0;
 	// 현재 내 돈의 총합
 	int sumOfMoney = 0;
-	bool isCharge = true;
+	bool isPayable = true;
 	while (start <= end)
 	{
 		// 인출 금액 K = mid
 		size_t K = (start + end) / 2;
 
-		isCharge = true;
+		isPayable = true;
 		sumOfMoney = 0;
 		cntWithdrawal = 0;
 
@@ -49,7 +49,7 @@ int BinarySearch(vector<int>& atm, int M)
 				// 인출한 금액 K가 atm[i]보다 작으면
 				if (K < atm[i])
 				{
-					isCharge = false;
+					isPayable = false;
 
 					// 오늘 사용할 금액이 부족
 					break;
@@ -64,7 +64,7 @@ int BinarySearch(vector<int>& atm, int M)
 		}
 
 		// 인출 제한 횟수 M보다 기간 내 인출한 횟수보다 크면,
-		if (M < cntWithdrawal || !isCharge)
+		if (M < cntWithdrawal || !isPayable)
 		{
 			start = K + 1;
 		}
