@@ -13,18 +13,18 @@ int BinarySearch(vector<int>& capacityOfMakgeolli, int maxCapacity, int K)
 	int answer = 0;
 	sort(capacityOfMakgeolli.begin(), capacityOfMakgeolli.end());
 
-	int start = 0, end = (int)(pow(2, 31) - 1);
+	size_t start = 0, end = (pow(2, 31));
 
 	vector<int> originalCapacityOfMakgeolli = capacityOfMakgeolli;
 	int cntFriends = 0;
 	while (start < end)
 	{
-		int mid = (start + end) / 2;
+		size_t mid = (start + end) / 2;
 		cntFriends = 0;
 
 		for (int j = 0; j < capacityOfMakgeolli.size(); j++)
 		{
-			cntFriends += max(0, capacityOfMakgeolli[j] / mid);
+			cntFriends += max((size_t)0, capacityOfMakgeolli[j] / mid);
 		}
 
 		// 친구들이 모두 mid만큼 먹었다면,
@@ -62,13 +62,6 @@ int main()
 	for (int i = 0; i < N; i++)
 	{
 		cin >> capacityOfMakgeolli[i];
-	}
-
-	if (N == 1 && K == 1 && capacityOfMakgeolli[0] == (int)(pow(2, 31) - 1))
-	{
-		cout << 2147483647;
-
-		return 0;
 	}
 
 	int maxCapacity = -1;
