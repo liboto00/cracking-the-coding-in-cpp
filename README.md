@@ -24,6 +24,7 @@
 >  - [NYPC](https://nypc.github.io/)
   
 ### Coding Interview
+> - [Effective Modern C++: 42 Specific Ways to Improve Your Use of C++11 and C++14](https://www.amazon.com/Effective-Modern-Specific-Ways-Improve-ebook/dp/B00PGCMGDQ/ref=sr_1_2?dchild=1&keywords=effective+c%2B%2B&qid=1589541739&sr=8-2)
 >  - [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?crid=1E59I76S8K0OJ&keywords=cracking+the+coding+interview&qid=1687845251&sprefix=cracking+the+coding+interview%2Caps%2C258&sr=8-1)
 >  - [Junior Graphics Programmer](https://erkaman.github.io/posts/junior_graphics_programmer_interview.html)
 >  - [Pearl Abyss interview simulation](https://www.youtube.com/watch?v=hohQLVYs3Pw&pp=ygUW7Y6E7Ja067mE7IqkIOyduO2EsOu3sA%3D%3D)
