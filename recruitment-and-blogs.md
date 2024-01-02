@@ -11,7 +11,7 @@ KRAFTON | [Krafton](https://krafton.com/careers/jobs/) | [Blog](https://blog.kra
 NCSOFT | [NCSoft](https://careers.ncsoft.com) | [Blog](https://site5.blog.oa.gg/pf/nc/)
 Netmarble | [Netmarble](https://company.netmarble.com/rem/www/noticelist.jsp#) | [Tech Blog](https://netmarble.engineering/)
 Pearl Abyss | [Pearl Abyss](https://www.pearlabyss.com/ko-KR/Company/Careers/List?_jobGroupCode=1) | [Youtube Channel - 펄쿠르트](https://www.youtube.com/@Pearlcruit)
-Smilegate | [Smilegate Careers](https://careers.smilegate.com/apply/announce?mainCategory=EMP004) | [Future Lab](https://futurelab.center/front/program/program)
+Smilegate | [Smilegate Careers](https://careers.smilegate.com/apply/announce?mainCategory=EMP004) | [Future Lab](https://futurelab.center/front/program/program) <br> [Smilegate AI](https://smilegate.ai/)
 Neowiz | [Neowiz](https://www.neowiz.com/neowiz/careers/recruit)
 Com2uS Studios | [Com2uS](https://com2us.recruiter.co.kr/app/jobnotice/list) | [Youtube Channel - 웰컴투스](https://www.youtube.com/@com2usrecruit) <br> [Recuitment Blog](https://blog.com2us.com/)
 Devsisters | [Devsisters](https://careers.devsisters.com/position/?category=1) | [Tech Blog - DevTech](https://tech.devsisters.com/)
