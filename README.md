@@ -9,6 +9,7 @@
 >  - [Debugging](https://modoocode.com/31)
 
 ### Concepts
+> - [About C++](https://www.youtube.com/watch?v=uTxRF5ag27A&list=WL&index=130&pp=gAQBiAQB)
 >  - [Floating-point arithmetic](https://modoocode.com/attachment/%EB%AA%A8%EB%93%A0%20%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B3%BC%ED%95%99%EC%9E%90%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%B6%80%EB%8F%99%20%EC%86%8C%EC%88%98%EC%A0%90%EC%9D%98%20%EB%AA%A8%EB%93%A0%EA%B2%83.pdf)
 >  - [Dynamic memory allocation](https://modoocode.com/169)
 >  - [struct](https://modoocode.com/55)
